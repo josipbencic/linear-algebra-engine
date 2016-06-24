@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\AlgebraicStructures\Mat3.hpp">
+      <Filter>Algebraic Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\AlgebraicStructures\Polynomial.hpp">
+      <Filter>Algebraic Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\AlgebraicStructures\RealCoordinateSpace.hpp">
+      <Filter>Algebraic Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\AlgebraicStructures\Vec3.hpp">
+      <Filter>Algebraic Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Algorithms\GramSchmidt.hpp">
+      <Filter>Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Constants.hpp" />
+    <ClInclude Include="Engine\MathStreams.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Algebraic Structures">
+      <UniqueIdentifier>{4a7539f5-ed9d-4753-83b3-6186f6ed961a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithms">
+      <UniqueIdentifier>{c17374f3-c813-4506-9760-a1fe6a96e615}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
