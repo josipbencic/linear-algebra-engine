@@ -60,7 +60,7 @@ namespace math {
 		to orthogonal complement of that subspace).
 	*/
 	template <typename VectorSpace>
-	float distanceFromSpace(
+	double distanceFromSpace(
 		std::vector<VectorSpace> space, VectorSpace vector) {
 
 		//	GramSchmidt can handle lineary dependent sets
@@ -82,8 +82,8 @@ namespace math {
 			orthoProj = orthoProj + scalar(vector, space[i]) * space[i];
 
 		VectorSpace vec = vector - orthoProj;
-		float s = scalar(vec, vec);
-		float ret = sqrt(s);
+		double s = scalar(vec, vec);
+		double ret = sqrt(s);
 
 		return sqrt(scalar(orthoProj - vector, orthoProj - vector));
 	}

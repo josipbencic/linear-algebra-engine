@@ -7,49 +7,44 @@
 
 namespace math {
 
-template <unsigned DEGREE> 
-class Polynomial {
+	template <unsigned DEGREE>
+	class Polynomial {
 
-	template <unsigned DEGREE_>
-	friend const Polynomial operator +(
-		const Polynomial<DEGREE_>& op1, const Polynomial<DEGREE_>& op2);
+		template <unsigned DEGREE_>
+		friend const Polynomial operator +(
+			const Polynomial<DEGREE_>& op1, const Polynomial<DEGREE_>& op2);
 
-	template <unsigned DEGREE_>
-	friend const Polynomial operator -(
-		const Polynomial<DEGREE_>& op1, const Polynomial<DEGREE_>& op2);
+		template <unsigned DEGREE_>
+		friend const Polynomial operator -(
+			const Polynomial<DEGREE_>& op1, const Polynomial<DEGREE_>& op2);
 
-public:
-	
-	static degree() {
-		return DEGREE;
-	}
+	public:
 
-	Polynomial() {
-		memset(coefficients, 0, sizeof(coefficients));
-	}
+		static degree() {
+			return DEGREE;
+		}
 
-	Polynomial(float coefficients__[]) {
-		copyCoefficients(coefficients__);
-	}
+		Polynomial() {
+			memset(coefficients, 0, sizeof(coefficients));
+		}
 
-	Polynomial(const Polynomial<DEGREE>& src) {
-		copyCoefficients(src.coefficients);
-	}
+		Polynomial(float coefficients__[]) {
+			copyCoefficients(coefficients__);
+		}
 
-private:
+		Polynomial(const Polynomial<DEGREE>& src) {
+			copyCoefficients(src.coefficients);
+		}
 
-	inline void copyCoefficients(const coefficients__[]) {
-		for (size_t i = 0; i < DEGREE; i++)
-			this->coefficients[i] = coefficients__[i];
-	}
+	private:
 
-	float coefficients[DEGREE];
-};
+		inline void copyCoefficients(const coefficients__[]) {
+			for (size_t i = 0; i < DEGREE; i++)
+				this->coefficients[i] = coefficients__[i];
+		}
 
-
+		float coefficients[DEGREE];
+	};
 
 }
-
-
 #endif
-

@@ -3,6 +3,7 @@
 
 //	matrix vector multiplication
 #include "../../Engine/AlgebraicStructures/Vec3.hpp"
+#include "../../Engine/Constants.hpp"
 
 #include <cmath>
 #include <cstring>
@@ -12,28 +13,28 @@ namespace math {
 	class mat3 {
 
 		friend inline vec3 operator* (const mat3& mat, const vec3& vec);
-		friend inline mat3 operator* (float alpha, const mat3& matrix);
-		friend inline mat3 operator* (const mat3& matrix, float alpha);
+		friend inline mat3 operator* (double alpha, const mat3& matrix);
+		friend inline mat3 operator* (const mat3& matrix, double alpha);
 		friend inline mat3 operator* (const mat3& left, const mat3& right);
 		friend inline mat3 operator+ (const mat3& a, const mat3& b);
 		friend inline mat3 operator- (const mat3& a, const mat3& b);
 
 		friend inline mat3 transpose(const mat3& a);
-		friend inline float trace(const mat3 &a);
-		friend inline float scalar(const mat3 &a, const mat3 &b);
+		friend inline double trace(const mat3 &a);
+		friend inline double scalar(const mat3 &a, const mat3 &b);
 
 		//	angle HAS to between 0 and half Pi
-		friend inline mat3 rotate(float angle_in_radians);
+		friend inline mat3 rotate(double angle_in_radians);
 		friend inline mat3 translate(const vec3& vec);
 		friend inline mat3 scale(const vec3& coeff);
-		friend inline mat3 scale(float coeff);
+		friend inline mat3 scale(double coeff);
 
 	public:
 		mat3() {
 			memset(data, 0, sizeof(data));
 		}
 
-		mat3(const float matrix[][3]) {
+		mat3(const double matrix[][3]) {
 			
 			data[0] = matrix[0][0];
 			data[1] = matrix[0][1];
@@ -46,7 +47,7 @@ namespace math {
 			data[8] = matrix[2][2];
 		}
 
-		mat3(float x) {
+		mat3(double x) {
 			for (unsigned i = 0; i < 9; i++)
 				data[i] = 0;
 			data[0] = data[4] = data[8] = x;
@@ -73,7 +74,7 @@ namespace math {
 		
 		const mat3& normalize() {
 
-			float norm = sqrt(scalar(*this, *this));
+			double norm = sqrt(scalar(*this, *this));
 			for (unsigned i = 0; i < 9; i++)
 				data[i] = data[i] / norm;
 
@@ -83,11 +84,11 @@ namespace math {
 		bool operator ==(const mat3& rhs) {
 			bool ret = true;
 			for (unsigned i = 0; i < 9; i++)
-				ret = ret && (rhs.data[i] == data[i]);
+				ret = ret && (abs(rhs.data[i] - data[i]) < EPSILON);
 			return ret;
 		}
 
-		float data[9];
+		double data[9];
 	};
 
 	inline mat3 operator-(const mat3& a, const mat3& b) {
@@ -121,7 +122,7 @@ namespace math {
 			mat.data[6] * vec.x + mat.data[7] * vec.y + mat.data[8] * vec.z);
 	}
 
-	inline mat3 scale(float coeff) {
+	inline mat3 scale(double coeff) {
 		mat3 ret;
 		ret.data[0] = ret.data[4] = ret.data[8] = coeff;
 		return ret;
@@ -143,9 +144,9 @@ namespace math {
 		return ret;
 	}
 
-	inline mat3 rotate(float angle) {
-		float c = cos(angle);
-		float s = sin(angle);
+	inline mat3 rotate(double angle) {
+		double c = cos(angle);
+		double s = sin(angle);
 		mat3 ret;
 		ret.data[0] = ret.data[4] = c;
 		ret.data[1] = -s;
@@ -166,22 +167,22 @@ namespace math {
 		return ret;
 	}
 
-	inline float trace(const mat3 &a) {
+	inline double trace(const mat3 &a) {
 		return a.data[0] + a.data[4] + a.data[8];
 	}
 
-	inline float scalar(const mat3& a, const mat3& b) {
+	inline double scalar(const mat3& a, const mat3& b) {
 		return trace(a * transpose(b));
 	}
 
-	inline mat3 operator* (float alpha, const mat3& A) {
+	inline mat3 operator* (double alpha, const mat3& A) {
 		mat3 ret = A;
 		for (int i = 0; i < 9; i++)
 			ret.data[i] *= alpha;
 		return ret;
 	}
 
-	inline mat3 operator* (const mat3& A, float alpha) {
+	inline mat3 operator* (const mat3& A, double alpha) {
 		return operator*(alpha, A);
 	}
 }

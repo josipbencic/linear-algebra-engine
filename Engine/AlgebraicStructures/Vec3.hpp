@@ -9,13 +9,13 @@ namespace math {
 
 		friend vec3 operator+ (const vec3& left, const vec3& right);
 		friend vec3 operator- (const vec3& left, const vec3& right);
-		friend inline float scalar(const vec3& a, const vec3& b);
-		friend vec3 operator* (const float scalar, const vec3& vector);
+		friend inline double scalar(const vec3& a, const vec3& b);
+		friend vec3 operator* (const double scalar, const vec3& vector);
 		friend inline vec3 normalize (const vec3& a);
 
 	public:
 
-		vec3(float x = 0.0f, float y = 0.0f, float z = 0.0f)
+		vec3(double x = 0.0f, double y = 0.0f, double z = 0.0f)
 			: x(x), y(y), z(z) 
 		{}
 		
@@ -49,9 +49,8 @@ namespace math {
 			return vec3(-x, -y, -z);
 		}
 
-		// TODO: speed this up with Q_rsqrt hack method
 		vec3& normalize() {
-			float d = sqrt(x*x + y*y + z*z);
+			double d = sqrt(x*x + y*y + z*z);
 			x /= d;
 			y /= d;
 			z /= d;
@@ -65,18 +64,18 @@ namespace math {
 			return *this;
 		}
 
-		float x, y, z;
+		double x, y, z;
 	};
 
-	inline vec3 point(float x, float y) {
+	inline vec3 point(double x, double y) {
 		return vec3(x, y, 1.0f);
 	}
 
-	inline vec3 vector(float x, float y) {
+	inline vec3 vector(double x, double y) {
 		return vec3(x, y, 0.0f);
 	}
 
-	inline vec3 operator* (const float scalar, const vec3& vector) {
+	inline vec3 operator* (const double scalar, const vec3& vector) {
 		return vec3(scalar * vector.x, scalar * vector.y, scalar * vector.z);
 	}
 
@@ -88,12 +87,12 @@ namespace math {
 		return vec3(left.x - right.x, left.y - right.y, left.z - right.z);
 	}
 
-	inline float scalar(const vec3& a, const vec3& b) {
+	inline double scalar(const vec3& a, const vec3& b) {
 		return a.x * b.x + a.y * b.y + a.z * b.z;
 	}
 		
 	inline vec3 normalize(const vec3& a) {
-		float d = sqrt(abs(a.x*a.x + a.y*a.y + a.z*a.z));
+		double d = sqrt(abs(a.x*a.x + a.y*a.y + a.z*a.z));
 		return vec3(a.x/d, a.y/d, a.z/d);;
 	}
 }

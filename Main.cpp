@@ -46,7 +46,7 @@ int main() {
 		if (decisions[1] == 3) {
 			input >> decisions[2];
 			for (unsigned i = 0; i < decisions[2]; i++) {
-				float x, y, z; input >> x >> y >> z;
+				double x, y, z; input >> x >> y >> z;
 				space3.push_back(vec3(x, y, z));
 			}
 
@@ -61,7 +61,7 @@ int main() {
 		else if (decisions[1] == 4) {
 			input >> decisions[2];
 			for (unsigned i = 0; i < decisions[2]; i++) {
-				float x[4]; input >> x[0] >> x[1] >> x[2] >> x[3];
+				double x[4]; input >> x[0] >> x[1] >> x[2] >> x[3];
 				space4.push_back(RealCoordinateSpace<4>(x));
 			}
 
@@ -77,7 +77,7 @@ int main() {
 
 			input >> decisions[2];
 			for (unsigned i = 0; i < decisions[2]; i++) {
-				float x[5]; input >> x[0] >> x[1] >> x[2] >> x[3] >> x[4];
+				double x[5]; input >> x[0] >> x[1] >> x[2] >> x[3] >> x[4];
 				space5.push_back(RealCoordinateSpace<5>(x));
 			}
 
@@ -101,13 +101,13 @@ int main() {
 		if (decisions[1] == 3) {
 			input >> decisions[2];
 			for (unsigned i = 0; i < decisions[2]; i++) {
-				float x, y, z; input >> x >> y >> z;
+				double x, y, z; input >> x >> y >> z;
 				space3.push_back(vec3(x, y, z));
 			}
 
-			float x, y, z; input >> x >> y >> z;
+			double x, y, z; input >> x >> y >> z;
 			vec3 vect = vec3(x, y, z);
-			float ans = distanceFromSpace(space3, vect);
+			double ans = distanceFromSpace(space3, vect);
 			cout << "Distance from subspace result: " << "\n\t" << ans << endl;
 			getchar();
 			return 0;
@@ -115,12 +115,12 @@ int main() {
 		else if (decisions[1] == 4) {
 			input >> decisions[2];
 			for (unsigned i = 0; i < decisions[2]; i++) {
-				float x[4]; input >> x[0] >> x[1] >> x[2] >> x[3];
+				double x[4]; input >> x[0] >> x[1] >> x[2] >> x[3];
 				space4.push_back(RealCoordinateSpace<4>(x));
 			}
-			float x[4]; input >> x[0] >> x[1] >> x[2] >> x[3];
+			double x[4]; input >> x[0] >> x[1] >> x[2] >> x[3];
 			RealCoordinateSpace<4> vect(x);
-			float ans = distanceFromSpace(space4, vect);
+			double ans = distanceFromSpace(space4, vect);
 			cout << "Distance from subspace result: " << "\n\t" << ans << endl;
 			getchar();
 			return 0;
@@ -129,13 +129,13 @@ int main() {
 
 			input >> decisions[2];
 			for (unsigned i = 0; i < decisions[2]; i++) {
-				float x[5]; input >> x[0] >> x[1] >> x[2] >> x[3] >> x[4];
+				double x[5]; input >> x[0] >> x[1] >> x[2] >> x[3] >> x[4];
 				space5.push_back(RealCoordinateSpace<5>(x));
 			}
 
-			float x[5]; input >> x[0] >> x[1] >> x[2] >> x[3] >> x[4];
+			double x[5]; input >> x[0] >> x[1] >> x[2] >> x[3] >> x[4];
 			RealCoordinateSpace<5> vect(x);
-			float ans = distanceFromSpace(space5, vect);
+			double ans = distanceFromSpace(space5, vect);
 			cout << "Distance from subspace result: " << "\n\t" << ans << endl;
 			getchar();
 			return 0;

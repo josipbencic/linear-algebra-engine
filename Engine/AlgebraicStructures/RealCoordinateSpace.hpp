@@ -28,11 +28,11 @@ namespace math {
 			return ret;
 		}
 
-		friend float scalar(
+		friend double scalar(
 			const RealCoordinateSpace<DIMENSION> &op1,
 			const RealCoordinateSpace<DIMENSION> &op2) {
 
-			float ret = 0.0f;
+			double ret = 0.0f;
 			for (size_t i = 0; i < DIMENSION; i++)
 				ret += op1.coords[i] * op2.coords[i];
 			return ret;
@@ -40,7 +40,7 @@ namespace math {
 
 		friend RealCoordinateSpace<DIMENSION>
 			operator *(
-				float alpha, const RealCoordinateSpace<DIMENSION> &op) {
+				double alpha, const RealCoordinateSpace<DIMENSION> &op) {
 
 			RealCoordinateSpace<DIMENSION> ret;
 			for (size_t i = 0; i < DIMENSION; i++)
@@ -51,7 +51,7 @@ namespace math {
 
 		friend RealCoordinateSpace<DIMENSION>
 			operator *(
-				const RealCoordinateSpace<DIMENSION> &op, float alpha) {
+				const RealCoordinateSpace<DIMENSION> &op, double alpha) {
 			return alpha * op;
 		}
 
@@ -65,7 +65,7 @@ namespace math {
 			copyCoords(src.coords);
 		}
 
-		RealCoordinateSpace(const float newCoords[]) {
+		RealCoordinateSpace(const double newCoords[]) {
 			copyCoords(newCoords);
 		}
 
@@ -81,26 +81,30 @@ namespace math {
 
 			bool ret = true;
 			for (size_t i = 0; i < DIMENSION; i++)
-				ret = ret && (coords[i] == rhs.coords[i]);
+				ret = ret && (abs(coords[i] - rhs.coords[i]) < EPSILON);
 			return ret;
 		}
 
 		RealCoordinateSpace<DIMENSION>&
 			normalize() {
 
-			float norm = sqrt(scalar(*this, *this));
+			//	cannot divide by zero!
+			if (*this == RealCoordinateSpace<DIMENSION>())
+				return *this;
+
+			double norm = sqrt(scalar(*this, *this));
 			for (size_t i = 0; i < DIMENSION; i++)
 				coords[i] = coords[i] / norm;
 			
 			return *this;
 		}
 
-		inline void copyCoords(const float newCoords[]) {
+		inline void copyCoords(const double newCoords[]) {
 			for (size_t i = 0; i < DIMENSION; i++)
 				coords[i] = newCoords[i];
 		}
 
-		float coords[DIMENSION];
+		double coords[DIMENSION];
 	};
 }
 
