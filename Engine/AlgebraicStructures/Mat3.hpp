@@ -2,7 +2,6 @@
 #define MAT3_HPP
 
 //	matrix vector multiplication
-#include "../../Engine/AlgebraicStructures/Vec3.hpp"
 #include "../../Engine/Constants.hpp"
 
 #include <cmath>
@@ -12,7 +11,9 @@ namespace math {
 
 	class mat3 {
 
-		friend inline vec3 operator* (const mat3& mat, const vec3& vec);
+		//	TODO: MATRIX - VECTOR MULTIPLICATION
+		//friend inline vec3 operator* (const mat3& mat, const vec3& vec);
+
 		friend inline mat3 operator* (double alpha, const mat3& matrix);
 		friend inline mat3 operator* (const mat3& matrix, double alpha);
 		friend inline mat3 operator* (const mat3& left, const mat3& right);
@@ -22,12 +23,6 @@ namespace math {
 		friend inline mat3 transpose(const mat3& a);
 		friend inline double trace(const mat3 &a);
 		friend inline double scalar(const mat3 &a, const mat3 &b);
-
-		//	angle HAS to between 0 and half Pi
-		friend inline mat3 rotate(double angle_in_radians);
-		friend inline mat3 translate(const vec3& vec);
-		friend inline mat3 scale(const vec3& coeff);
-		friend inline mat3 scale(double coeff);
 
 	public:
 		mat3() {
@@ -111,47 +106,6 @@ namespace math {
 			for (unsigned j = 0; j < 3; j++)
 				for (unsigned k = 0; k < 3; k++)
 					ret.data[i * 3 + j] += left.data[i * 3 + k] * right.data[k * 3 + j];
-		return ret;
-	}
-
-	//	 TODO: edit last line if possible
-	inline vec3 operator*(const mat3& mat, const vec3& vec) {
-		return vec3(
-			mat.data[0] * vec.x + mat.data[1] * vec.y + mat.data[2] * vec.z,
-			mat.data[3] * vec.x + mat.data[4] * vec.y + mat.data[5] * vec.z,
-			mat.data[6] * vec.x + mat.data[7] * vec.y + mat.data[8] * vec.z);
-	}
-
-	inline mat3 scale(double coeff) {
-		mat3 ret;
-		ret.data[0] = ret.data[4] = ret.data[8] = coeff;
-		return ret;
-	}
-
-	inline mat3 scale(const vec3& coeff) {
-		mat3 ret;
-		ret.data[0] = coeff.x;
-		ret.data[4] = coeff.y;
-		ret.data[8] = 1;
-		return ret;
-	}
-
-	inline mat3 translate(const vec3& vec) {
-		mat3 ret;
-		ret.data[2] = vec.x;
-		ret.data[5] = vec.y;
-		ret.data[8] = ret.data[4] = ret.data[0] = 1;
-		return ret;
-	}
-
-	inline mat3 rotate(double angle) {
-		double c = cos(angle);
-		double s = sin(angle);
-		mat3 ret;
-		ret.data[0] = ret.data[4] = c;
-		ret.data[1] = -s;
-		ret.data[3] = s;
-		ret.data[8] = 1;
 		return ret;
 	}
 	

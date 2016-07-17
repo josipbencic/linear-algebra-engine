@@ -16,7 +16,6 @@ mat3(symmetricalMatricesSubspaceData[i]));
 
 cout << distanceFromSpace(symmetricalMatricesSubspace, aMatrix) << endl;
 
-
 float someVectorCoords[] = { 0, 1, 1, -1, -1 };
 float otherVectorCoords[] = {2, 7, 0, 4};
 
@@ -28,7 +27,6 @@ M.push_back(RealCoordinateSpace<4>(otherVectors[i]));
 M = GramSchmidt(M);
 for (int i = 0; i < M.size(); i++)
 cout << M[i] << endl;
-
 
 cout << distanceFromSpace(M, someVector) << endl;
 
