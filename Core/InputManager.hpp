@@ -10,29 +10,29 @@
 
 #include <vector>
 
-//	Handles input
+//  Handles input
 class InputManager {
 public:
-	InputManager() = default;
+  InputManager() = default;
 
-	int processInput(const char* fileName, math::Spaces space);
+  int processInput(const char* fileName, math::ESpaces space);
 
-	std::vector<math::RealCoordinateSpace<3>>	space3;
-	std::vector<math::RealCoordinateSpace<4>>	space4;
-	std::vector<math::RealCoordinateSpace<5>>	space5;
-	std::vector<math::Polynomial<2>>			spacePoly2;
-	std::vector<math::Polynomial<3>>			spacePoly3;
-	std::vector<math::Polynomial<4>>			spacePoly4;
-	std::vector<math::mat3>						matrixSpace3;
-	std::vector<std::vector<double>>			linearSystem;
+  std::vector<math::Rn<3>> space3;
+  std::vector<math::Rn<4>> space4;
+  std::vector<math::Rn<5>> space5;
+  std::vector<math::Polynomial<2>>      spacePoly2;
+  std::vector<math::Polynomial<3>>      spacePoly3;
+  std::vector<math::Polynomial<4>>      spacePoly4;
+  std::vector<math::mat3>           matrixSpace3;
+  std::vector<std::vector<double>>      linearSystem;
 
 private:
 
-	//	No copying allowed
-	InputManager(const InputManager&&);
-	InputManager(const InputManager&);
-	InputManager& operator =(const InputManager&&) {}
-	InputManager& operator =(const InputManager&) {}
+  //  No copying allowed
+  InputManager(const InputManager&&);
+  InputManager(const InputManager&);
+  InputManager& operator =(const InputManager&&) {}
+  InputManager& operator =(const InputManager&) {}
 };
 
 #endif

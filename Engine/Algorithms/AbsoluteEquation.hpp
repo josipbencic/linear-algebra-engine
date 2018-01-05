@@ -6,20 +6,20 @@
 
 namespace math {
 
-	/*
-		Solve absolute equations with single appearance of x.
-		Coefficients are laid out from left to right in following way:
+  /*
+    Solve absolute equations with single appearance of x.
+    Coefficients are laid out from left to right in following way:
 
-		|| .. ||A0x + A1| + A2| ... | + AN-1| = AN
-	*/
-	std::set<double> solveAbsoluteEquationWithSingleX(const std::vector<double>& equation);
+    || .. ||A0x + A1| + A2| ... | + AN-1| = AN
+  */
+  std::set<double> solveAbsoluteEquationWithSingleX(const std::vector<double>& equation);
 
-	/*
-		TODO.
+  /*
+    TODO.
 
-		Return value will be std::set<double>.
-	*/
-	void solveAbsoluteEquationWithMultipleX(const std::vector<double>& equation) {}
+    Return value will be std::set<double>.
+  */
+  void solveAbsoluteEquationWithMultipleX(const std::vector<double>& equation) {}
 }
 
 #endif

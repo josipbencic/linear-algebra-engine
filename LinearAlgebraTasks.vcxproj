@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -22,12 +22,13 @@
     <ProjectGuid>{A0989AC6-4092-47CE-B5AD-3445680F9B6E}</ProjectGuid>
     <RootNamespace>LinearAlgebraTasks</RootNamespace>
     <ProjectName>LinearAlgebraEngine</ProjectName>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -40,13 +41,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -115,17 +116,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Core\ApplicationStateMachine.cpp" />
     <ClCompile Include="Core\InputManager.cpp" />
     <ClCompile Include="Core\Main.cpp" />
-    <ClCompile Include="Core\StateMachine.cpp" />
     <ClCompile Include="Core\View.cpp" />
     <ClCompile Include="Engine\Algorithms\AbsoluteEquation.cpp" />
     <ClCompile Include="Engine\Algorithms\GaussianElimination.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core\ApplicationStateMachine.hpp" />
     <ClInclude Include="Core\InputManager.hpp" />
     <ClInclude Include="Core\Platform.hpp" />
-    <ClInclude Include="Core\StateMachine.hpp" />
     <ClInclude Include="Core\View.hpp" />
     <ClInclude Include="Engine\AlgebraicStructures\Mat3.hpp" />
     <ClInclude Include="Engine\AlgebraicStructures\Polynomial.hpp" />

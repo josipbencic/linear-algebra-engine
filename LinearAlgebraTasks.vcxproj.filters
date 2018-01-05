@@ -7,9 +7,6 @@
     <ClCompile Include="Core\Main.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Core\StateMachine.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="Core\View.cpp">
       <Filter>Core</Filter>
     </ClCompile>
@@ -18,6 +15,9 @@
     </ClCompile>
     <ClCompile Include="Engine\Algorithms\AbsoluteEquation.cpp">
       <Filter>Engine\Algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ApplicationStateMachine.cpp">
+      <Filter>Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -48,14 +48,14 @@
     <ClInclude Include="Core\Platform.hpp">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Core\StateMachine.hpp">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="Core\View.hpp">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Algorithms\AbsoluteEquation.hpp">
       <Filter>Engine\Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ApplicationStateMachine.hpp">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

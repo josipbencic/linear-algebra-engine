@@ -2,16 +2,16 @@
 #define PLATFORM_HPP
 
 #ifdef _WIN32
-#	define CLEAR "cls"
+# define CLEAR "cls"
 
 #elif defined(__unix__)
-#	define CLEAR "clear"
+# define CLEAR "clear"
 
 #elif define (__APPLE__)
-#	define CLEAR "clear"
+# define CLEAR "clear"
 
 #else
-#	define CLEAR ""
+# define CLEAR ""
 
-#endif	//	OS
-#endif	// PLATFORM_HPP
+#endif  //  OS
+#endif  // PLATFORM_HPP

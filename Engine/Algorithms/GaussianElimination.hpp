@@ -7,10 +7,10 @@
 
 namespace math {
 
-	/*
-		Gaussian elimination on lineary independent set.
-	*/
-	std::vector<double> GaussianElimination(std::vector<std::vector<double>> v);
+  /*
+    Gaussian elimination on lineary independent set.
+  */
+  std::vector<double> GaussianElimination(std::vector<std::vector<double>> v);
 }
 
 #endif
