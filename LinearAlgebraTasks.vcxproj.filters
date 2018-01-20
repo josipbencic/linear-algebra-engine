@@ -7,9 +7,6 @@
     <ClCompile Include="Engine\Algorithms\GaussianElimination.cpp">
       <Filter>Engine\Algorithms</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Algorithms\AbsoluteEquation.cpp">
-      <Filter>Engine\Algorithms</Filter>
-    </ClCompile>
     <ClCompile Include="Core\Tester\TesterMain.cpp">
       <Filter>Core\Tester</Filter>
     </ClCompile>
@@ -47,9 +44,6 @@
     </ClInclude>
     <ClInclude Include="Core\Platform.hpp">
       <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Algorithms\AbsoluteEquation.hpp">
-      <Filter>Engine\Algorithms</Filter>
     </ClInclude>
     <ClInclude Include="Core\ConsoleApp\ApplicationInputManager.hpp">
       <Filter>Core\ConsoleApp</Filter>

@@ -121,7 +121,6 @@
     <ClCompile Include="Core\ConsoleApp\ApplicationStateMachine.cpp" />
     <ClCompile Include="Core\Main.cpp" />
     <ClCompile Include="Core\Tester\TesterMain.cpp" />
-    <ClCompile Include="Engine\Algorithms\AbsoluteEquation.cpp" />
     <ClCompile Include="Engine\Algorithms\GaussianElimination.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -132,7 +131,6 @@
     <ClInclude Include="Engine\AlgebraicStructures\Mat3.hpp" />
     <ClInclude Include="Engine\AlgebraicStructures\Polynomial.hpp" />
     <ClInclude Include="Engine\AlgebraicStructures\RealCoordinateSpace.hpp" />
-    <ClInclude Include="Engine\Algorithms\AbsoluteEquation.hpp" />
     <ClInclude Include="Engine\Algorithms\GaussianElimination.hpp" />
     <ClInclude Include="Engine\Algorithms\GramSchmidt.hpp" />
     <ClInclude Include="Engine\Constants.hpp" />
