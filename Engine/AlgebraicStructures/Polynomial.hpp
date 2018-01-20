@@ -28,9 +28,9 @@ namespace math {
     Polynomial(std::initializer_list<double> src) {
       memset(coefficients, 0, sizeof(coefficients));
       size_t j = 0;
-      for (auto i = src.begin(); i != src.end() &&
-        (i - src.begin()) <= DEGREE; i++)
+      for (auto i = src.begin(); i != src.end() && (i - src.begin()) <= DEGREE; i++) {
         coefficients[j++] = *i;
+      }
     }
 
     Polynomial(const Polynomial<DEGREE>& src) {
@@ -44,6 +44,17 @@ namespace math {
         coefficients[i] = rhs[i];
       return *this;
     }
+
+    Polynomial(const Polynomial<DEGREE>&& rhs) {
+      copyCoefficients(rhs.coefficents);
+      memset(rhs.coefficients, 0, sizeof(rhs.coefficients));
+    }
+
+    const Polynomial<DEGREE>& operator =(const Polynomial<DEGREE>&& rhs) {
+      copyCoefficients(rhs.coefficents);
+      memset(rhs.coefficients, 0, sizeof(rhs.coefficients));
+    }
+
 
     static unsigned degree() {
       return DEGREE;
