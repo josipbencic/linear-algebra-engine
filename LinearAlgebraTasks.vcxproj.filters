@@ -1,13 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Core\InputManager.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="Core\Main.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\View.cpp">
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Algorithms\GaussianElimination.cpp">
@@ -16,8 +10,17 @@
     <ClCompile Include="Engine\Algorithms\AbsoluteEquation.cpp">
       <Filter>Engine\Algorithms</Filter>
     </ClCompile>
-    <ClCompile Include="Core\ApplicationStateMachine.cpp">
-      <Filter>Core</Filter>
+    <ClCompile Include="Core\Tester\TesterMain.cpp">
+      <Filter>Core\Tester</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ConsoleApp\ApplicationInputManager.cpp">
+      <Filter>Core\ConsoleApp</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ConsoleApp\ApplicationState.cpp">
+      <Filter>Core\ConsoleApp</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\ConsoleApp\ApplicationStateMachine.cpp">
+      <Filter>Core\ConsoleApp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -42,20 +45,20 @@
     <ClInclude Include="Engine\Constants.hpp">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Core\InputManager.hpp">
-      <Filter>Core</Filter>
-    </ClInclude>
     <ClInclude Include="Core\Platform.hpp">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\View.hpp">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Algorithms\AbsoluteEquation.hpp">
       <Filter>Engine\Algorithms</Filter>
     </ClInclude>
-    <ClInclude Include="Core\ApplicationStateMachine.hpp">
-      <Filter>Core</Filter>
+    <ClInclude Include="Core\ConsoleApp\ApplicationInputManager.hpp">
+      <Filter>Core\ConsoleApp</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ConsoleApp\ApplicationState.hpp">
+      <Filter>Core\ConsoleApp</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ConsoleApp\ApplicationStateMachine.hpp">
+      <Filter>Core\ConsoleApp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +73,12 @@
     </Filter>
     <Filter Include="Core">
       <UniqueIdentifier>{b3f3e938-ecaa-454a-a535-7e34fba57a4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Tester">
+      <UniqueIdentifier>{60b94cce-9072-4b22-802e-6ab1e39670b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\ConsoleApp">
+      <UniqueIdentifier>{66304d76-0d12-4f5d-b5bd-284a7426fea0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

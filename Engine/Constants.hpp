@@ -3,14 +3,14 @@
 
 namespace math {
 
-  enum ESpaces {
-    SPACE3 = 0,
-    SPACE4 = 1,
-    SPACE5 = 2,
+  enum class ESpaces {
+    R3 = 0,
+    R4 = 1,
+    R5 = 2,
     POLY2 = 3,
     POLY3 = 4,
     POLY4 = 5,
-    MATRIXSPACE3 = 6,
+    M33 = 6,
     LINEARSYSTEM = 7
   };
 

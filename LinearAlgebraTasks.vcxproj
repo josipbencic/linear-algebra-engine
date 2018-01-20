@@ -116,18 +116,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Core\ApplicationStateMachine.cpp" />
-    <ClCompile Include="Core\InputManager.cpp" />
+    <ClCompile Include="Core\ConsoleApp\ApplicationInputManager.cpp" />
+    <ClCompile Include="Core\ConsoleApp\ApplicationState.cpp" />
+    <ClCompile Include="Core\ConsoleApp\ApplicationStateMachine.cpp" />
     <ClCompile Include="Core\Main.cpp" />
-    <ClCompile Include="Core\View.cpp" />
+    <ClCompile Include="Core\Tester\TesterMain.cpp" />
     <ClCompile Include="Engine\Algorithms\AbsoluteEquation.cpp" />
     <ClCompile Include="Engine\Algorithms\GaussianElimination.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core\ApplicationStateMachine.hpp" />
-    <ClInclude Include="Core\InputManager.hpp" />
+    <ClInclude Include="Core\ConsoleApp\ApplicationInputManager.hpp" />
+    <ClInclude Include="Core\ConsoleApp\ApplicationState.hpp" />
+    <ClInclude Include="Core\ConsoleApp\ApplicationStateMachine.hpp" />
     <ClInclude Include="Core\Platform.hpp" />
-    <ClInclude Include="Core\View.hpp" />
     <ClInclude Include="Engine\AlgebraicStructures\Mat3.hpp" />
     <ClInclude Include="Engine\AlgebraicStructures\Polynomial.hpp" />
     <ClInclude Include="Engine\AlgebraicStructures\RealCoordinateSpace.hpp" />

@@ -13,7 +13,7 @@
 
 namespace math {
 
-  inline std::ostream& operator <<(std::ostream& stream, const mat3& mat) {
+  inline std::ostream& operator <<(std::ostream& stream, const M33& mat) {
     stream << '[';
     for (int i = 0; i < 3; i++) {
       stream << "  ";
@@ -26,7 +26,7 @@ namespace math {
     return stream;
   }
 
-  inline std::istream& operator >>(std::istream& stream, mat3& mat) {
+  inline std::istream& operator >>(std::istream& stream, M33& mat) {
     for (size_t i = 0; i < 9; i++)
       stream >> mat.data[i];
     return stream;
