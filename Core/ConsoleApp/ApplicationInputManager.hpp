@@ -6,35 +6,10 @@
 #include "../../Engine/AlgebraicStructures/Polynomial.hpp"
 #include "../../Engine/AlgebraicStructures/Mat3.hpp"
 
-#include "../../Engine/MathStreams.hpp"
+#include "../../Core/MathStreams.hpp"
 
 #include <vector>
 #include <string>
-
-class InputUtil {
-public:
-
-  template<typename VectorSpace>
-  static int readVectorSpaceInputFromStream(std::vector<VectorSpace>& space, std::stringstream& stream) {
-      unsigned vectorNum;
-      stream >> vectorNum;
-
-      space.clear();
-      space.resize(vectorNum, VectorSpace());
-
-      for (std::size_t i = 0; i < vectorNum; i++) {
-        if (!stream) {
-          space.clear();
-          return 1;
-        }
-        stream >> space[i];
-      }
-      return 0;
-  }
-
-  static int readLinearSystemFromStream(
-    std::vector<std::vector<double>> &linearSystem, std::stringstream& stream);
-};
 
 class InputManager {
 public:

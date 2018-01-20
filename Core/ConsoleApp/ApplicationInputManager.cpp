@@ -7,26 +7,6 @@
 using namespace std;
 using namespace math;
 
-int InputUtil::readLinearSystemFromStream(
-  vector<vector<double>> &linearSystem, stringstream& stream) {
-
-  size_t n;
-  stream >> n;
-  linearSystem.clear();
-  linearSystem.resize(n, vector<double>(n + 1, 0.0));
-
-  for (size_t i = 0; i < n; i++) {
-    for (size_t j = 0; j < n + 1; j++) {
-      if (!stream) {
-        return 1;
-      }
-      stream >> linearSystem[i][j];
-    }
-  }
-  return 0;
-}
-
-
 int InputManager::processInput(string filePath, ESpaces space) {
 
   ifstream file(filePath);

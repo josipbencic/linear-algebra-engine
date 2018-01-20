@@ -19,6 +19,9 @@
     <ClCompile Include="Core\ConsoleApp\ApplicationStateMachine.cpp">
       <Filter>Core\ConsoleApp</Filter>
     </ClCompile>
+    <ClCompile Include="Core\MathStreams.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\AlgebraicStructures\Mat3.hpp">
@@ -36,9 +39,6 @@
     <ClInclude Include="Engine\Algorithms\GaussianElimination.hpp">
       <Filter>Engine\Algorithms</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\MathStreams.hpp">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Constants.hpp">
       <Filter>Engine</Filter>
     </ClInclude>
@@ -53,6 +53,9 @@
     </ClInclude>
     <ClInclude Include="Core\ConsoleApp\ApplicationStateMachine.hpp">
       <Filter>Core\ConsoleApp</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\MathStreams.hpp">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

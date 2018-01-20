@@ -6,46 +6,6 @@
 
 enum class EApplicationState;
 
-
-class OutputUtil {
-public:
-
-  template <typename VectorSpace>
-  static void writeGramSchmidtSolutionToStream(std::vector<VectorSpace>& v, std::ostream* stream) {
-    std::ostream& out = *stream;
-    out << "\n\t The result:\n\n";
-    auto ret = math::GramSchmidt(v);
-    for (auto& x : ret) {
-      out << "\t" << x << "\n";
-    }
-  }
-
-  template <typename VectorSpace>
-  static void writeDistanceFromSubspaceSolutionToStream(std::vector<VectorSpace>& linearHull, std::ostream* stream) {
-
-    std::ostream& out = *stream;
-    if (linearHull.empty()) {
-      out << "The linear subspace has not been specified properly!" << std::endl;
-      return;
-    }
-    VectorSpace v = linearHull[linearHull.size() - 1];
-    linearHull.pop_back();
-    double distance = distanceFromSpace(linearHull, v);
-    out << "\n\t The distance is:\n\n";
-    out << distance << std::endl;
-  }
-
-  static void writeLinearSystemSolutionToStream(std::vector<double>& ret, std::ostream* stream) {
-    std::ostream& out = *stream;
-
-    out << "\t The result:\n\n";
-    for (std::size_t i = 0; i < ret.size(); i++) {
-      out << "\tx" << (i + 1) << " = " << ret[i] << "\n";
-    }
-    out << std::endl;
-  }
-};
-
 /*  A family of functors used to display states.
     Each class represents a part of application and
     handles certain (name - explainatory) function.

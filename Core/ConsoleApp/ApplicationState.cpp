@@ -4,6 +4,7 @@
 #include "ApplicationInputManager.hpp"
 
 #include "../../Core/Platform.hpp"
+#include "../../Core/MathStreams.hpp"
 
 #include "../../Engine/Constants.hpp"
 #include "../../Engine/Algorithms/GramSchmidt.hpp"
