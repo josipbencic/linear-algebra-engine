@@ -3,23 +3,23 @@
 
 namespace math {
 
-  template <size_t DIMENSION>
+  template <size_t DIMENSION, typename REAL_TYPE = double>
   class Rn {
 
-    friend Rn<DIMENSION> operator +(
-        const Rn<DIMENSION> &op1, const Rn<DIMENSION> &op2) {
+    friend Rn<DIMENSION, REAL_TYPE> operator +(
+        const Rn<DIMENSION, REAL_TYPE> &op1, const Rn<DIMENSION, REAL_TYPE> &op2) {
 
-      Rn<DIMENSION> ret;
+      Rn<DIMENSION, REAL_TYPE> ret;
       for (size_t i = 0; i < DIMENSION; i++) {
         ret.component[i] = op1.component[i] + op2.component[i];
       }
       return ret;
     }
 
-    friend Rn<DIMENSION> operator -(
-      const Rn<DIMENSION> &op1, const Rn<DIMENSION> &op2) {
+    friend Rn<DIMENSION, REAL_TYPE> operator -(
+      const Rn<DIMENSION, REAL_TYPE> &op1, const Rn<DIMENSION, REAL_TYPE> &op2) {
 
-      Rn<DIMENSION> ret;
+      Rn<DIMENSION, REAL_TYPE> ret;
       for (size_t i = 0; i < DIMENSION; i++) {
         ret.component[i] = op1.component[i] - op2.component[i];
       }
@@ -27,7 +27,7 @@ namespace math {
     }
 
     friend double inner_product(
-      const Rn<DIMENSION> &op1, const Rn<DIMENSION> &op2) {
+      const Rn<DIMENSION, REAL_TYPE> &op1, const Rn<DIMENSION, REAL_TYPE> &op2) {
 
       double ret = 0.0f;
       for (size_t i = 0; i < DIMENSION; i++) {
@@ -36,10 +36,10 @@ namespace math {
       return ret;
     }
 
-    friend inline Rn<DIMENSION> operator *(
-      double alpha, const Rn<DIMENSION> &op) {
+    friend inline Rn<DIMENSION, REAL_TYPE> operator *(
+      double alpha, const Rn<DIMENSION, REAL_TYPE> &op) {
 
-      Rn<DIMENSION> ret;
+      Rn<DIMENSION, REAL_TYPE> ret;
       for (size_t i = 0; i < DIMENSION; i++) {
         ret.component[i] = alpha * op.component[i];
       }
@@ -47,7 +47,7 @@ namespace math {
 
     }
 
-    friend inline Rn<DIMENSION> operator *(const Rn<DIMENSION> &op, double alpha) {
+    friend inline Rn<DIMENSION, REAL_TYPE> operator *(const Rn<DIMENSION, REAL_TYPE> &op, double alpha) {
       return alpha * op;
     }
 
@@ -64,19 +64,23 @@ namespace math {
       copy_n(src.component, DIMENSION, component);
     }
 
-    Rn(const double newCoords[]) {
+    Rn(const Rn<DIMENSION, float> &src) {
+      copy_n(src.component, DIMENSION, component);
+    }
+
+    Rn(REAL_TYPE newCoords[]) {
       copy_n(newCoords, DIMENSION, component);
     }
 
-    const Rn<DIMENSION> operator -() {
-      Rn<DIMENSION> ret;
+    const Rn<DIMENSION, REAL_TYPE> operator -() {
+      Rn<DIMENSION, REAL_TYPE> ret;
       for (size_t i = 0; i < DIMENSION; i++) {
         ret.component[i] = -component[i];
       }
       return ret;
     }
 
-    bool operator ==(const Rn<DIMENSION>& rhs) {
+    bool operator ==(const Rn<DIMENSION, REAL_TYPE>& rhs) {
 
       for (size_t i = 0; i < DIMENSION; i++) {
         if (abs(component[i] - rhs.component[i]) < EPSILON) {
@@ -86,10 +90,10 @@ namespace math {
       return true;
     }
 
-    Rn<DIMENSION>& normalize() {
+    Rn<DIMENSION, REAL_TYPE>& normalize() {
 
       //  cannot divide by zero!
-      if (*this == Rn<DIMENSION>()) {
+      if (*this == Rn<DIMENSION, REAL_TYPE>()) {
         return *this;
       }
 

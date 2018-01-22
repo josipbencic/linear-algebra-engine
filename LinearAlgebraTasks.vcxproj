@@ -133,6 +133,7 @@
     <ClInclude Include="Engine\AlgebraicStructures\Mat3.hpp" />
     <ClInclude Include="Engine\AlgebraicStructures\Polynomial.hpp" />
     <ClInclude Include="Engine\AlgebraicStructures\RealCoordinateSpace.hpp" />
+    <ClInclude Include="Engine\AlgebraicStructures\Surface.hpp" />
     <ClInclude Include="Engine\Algorithms\GaussianElimination.hpp" />
     <ClInclude Include="Engine\Algorithms\GramSchmidt.hpp" />
     <ClInclude Include="Engine\Constants.hpp" />

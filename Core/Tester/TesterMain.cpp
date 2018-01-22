@@ -1,8 +1,10 @@
+#ifndef TESTER
+#define TESTER 1
+#endif
 #if TESTER > 0
 
-#include "../../Core/InputManager.hpp"
-#include "../../Engine/MathStreams.hpp"
-
+#include "../MathStreams.hpp"
+#include "../ConsoleApp/ApplicationStateMachine.hpp"
 
 #include "../../Engine/Algorithms/GramSchmidt.hpp"
 #include "../../Engine/Algorithms/GaussianElimination.hpp"
@@ -70,7 +72,7 @@ string solveTest(TestType test, ifstream& fromName) {
     solveGSorDistInSpace<Rn<5>>(test, in, sol);
     break;
   case math::ESpaces::M33:
-    solveGSorDistInSpace<mat3>(test, in, sol);
+    solveGSorDistInSpace<M33>(test, in, sol);
     break;
   }
   return sol.str();
@@ -142,5 +144,4 @@ int main() {
 
   getchar();
 }
-
 #endif

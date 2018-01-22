@@ -7,9 +7,6 @@
     <ClCompile Include="Engine\Algorithms\GaussianElimination.cpp">
       <Filter>Engine\Algorithms</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Tester\TesterMain.cpp">
-      <Filter>Core\Tester</Filter>
-    </ClCompile>
     <ClCompile Include="Core\ConsoleApp\ApplicationInputManager.cpp">
       <Filter>Core\ConsoleApp</Filter>
     </ClCompile>
@@ -21,6 +18,9 @@
     </ClCompile>
     <ClCompile Include="Core\MathStreams.cpp">
       <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Tester\TesterMain.cpp">
+      <Filter>Core\Tester</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -56,6 +56,9 @@
     </ClInclude>
     <ClInclude Include="Core\MathStreams.hpp">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\AlgebraicStructures\Surface.hpp">
+      <Filter>Engine\Algebraic Structures</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-#define CONSOLE_APP 1
+#define CONSOLE_APP 0
 
 #if CONSOLE_APP > 0
 
