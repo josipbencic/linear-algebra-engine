@@ -1,6 +1,8 @@
 #ifndef REALCOORDINATESPACE_HPP
 #define REALCOORDINATESPACE_HPP
 
+#include <initializer_list>
+
 namespace math {
 
   template <size_t DIMENSION, typename REAL_TYPE = double>
@@ -70,6 +72,18 @@ namespace math {
 
     Rn(REAL_TYPE newCoords[]) {
       copy_n(newCoords, DIMENSION, component);
+    }
+
+    /*  Relatively slow. Use in playground. */
+    Rn(std::initializer_list<REAL_TYPE>&& src) {
+      for (size_t i = 0; i < DIMENSION; i++) {
+        if (src.size() > i) {
+          component[i] = *(begin(src) + i);
+        }
+        else {
+          component[i] = 0;
+        }
+      }
     }
 
     const Rn<DIMENSION, REAL_TYPE> operator -() {

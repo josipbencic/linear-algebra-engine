@@ -1,9 +1,11 @@
 #ifndef MATH_STREAMS_HPP
 #define MATH_STREAMS_HPP
 
-#include "../../Engine/AlgebraicStructures/RealCoordinateSpace.hpp"
-#include "../../Engine/AlgebraicStructures/Mat3.hpp"
-#include "../../Engine/AlgebraicStructures/Polynomial.hpp"
+#include "../Engine/AlgebraicStructures/RealCoordinateSpace.hpp"
+#include "../Engine/AlgebraicStructures/Mat3.hpp"
+#include "../Engine/AlgebraicStructures/Polynomial.hpp"
+#include "../Engine/AlgebraicStructures/Polynomial2.hpp"
+#include "../Engine/AlgebraicStructures/Surface.hpp"
 
 #include <iostream>
 #include <ostream>
@@ -11,6 +13,7 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <tuple>
 
 struct InputUtil {
   template<typename VectorSpace>
@@ -49,6 +52,17 @@ inline std::ostream& operator <<(std::ostream& stream, const math::Polynomial<DE
 template <unsigned DEGREE_>
 inline std::istream& operator >>(std::istream& stream, math::Polynomial<DEGREE_>& p);
 
+template <unsigned DEGREE_>
+inline std::ostream& operator <<(std::ostream& stream, const math::Polynomial2<DEGREE_>& p);
+
+template <unsigned DEGREE_>
+inline std::istream& operator >>(std::istream& stream, math::Polynomial2<DEGREE_>& p);
+
+template <typename F1, typename F2, typename F3>
+inline std::ostream& operator <<(std::ostream& stream, const math::Surface<F1, F2, F3>& Phi);
+
+template <typename F1, typename F2, typename F3>
+inline std::istream& operator >>(std::istream& stream, math::Surface<F1, F2, F3>& Phi);
 
 //  Implementation
 
@@ -102,8 +116,7 @@ inline std::ostream& operator <<(std::ostream& stream, const math::Rn<DIM__>& ve
   for (size_t i = 0; i < DIM__ - 1; i++) {
     stream << vector.component[i] << ", ";
   }
-  stream << vector.component[DIM__ - 1] << ")";
-  return stream;
+  return stream << vector.component[DIM__ - 1] << ")";
 }
 
 template <unsigned DIM__>
@@ -150,9 +163,83 @@ inline std::ostream& operator <<(std::ostream& stream, const math::Polynomial<DE
 
 template <unsigned DEGREE_>
 inline std::istream& operator >>(std::istream& stream, math::Polynomial<DEGREE_>& p) {
-  for (size_t i = DEGREE_; i >= 0; i--)
+  for (size_t i = DEGREE_; i >= 0; i--) {
     stream >> p[i];
+  }
   return stream;
 }
+
+
+/*  Pretty print operator for 2d polynomial.
+*/
+template <unsigned DEGREE_>
+inline std::ostream& operator <<(std::ostream& stream, const math::Polynomial2<DEGREE_>& p) {
+  tuple<size_t, size_t> start = { 0,0 };
+  const tuple<size_t, size_t> last = { DEGREE_ + 1, DEGREE_ + 1 };
+
+  for (size_t i = 0; i <= DEGREE_; i++) {
+    for (size_t j = 0; j <= DEGREE_; j++) {
+      const auto aij = p.coefficient[i][j];
+      if (aij == 0) {
+        if (start != last) {
+          start = { i,j };
+        }
+        continue;
+      }
+
+      if (aij > 0) {
+        if (start == last) {
+          stream << " + ";
+        }
+        else {
+          start = last;
+        }
+        if (aij != 1 || (i == 0 && j == 0)) {
+          stream << aij;
+        }
+      }
+      if (aij < 0) {
+        stream << " - ";
+        if (aij != -1 || (i == 0 && j == 0)) {
+          stream << abs(aij);
+        }
+      }
+      if (i > 0) {
+        stream << "x";
+        if (i > 1) {
+          stream << i;
+        }
+      }
+      if (j != 0) {
+        stream << "y";
+        if (j > 1) {
+          stream << j;
+        }
+      }
+    }
+  }
+  return stream;
+}
+
+template <unsigned DEGREE_>
+inline std::istream& operator >>(std::istream& stream, math::Polynomial2<DEGREE_>& p) {
+  for (size_t i = 0; i <= DEGREE_; i++) {
+    for (size_t j = 0; j <= DEGREE_; j++) {
+      stream >> p.coefficient[i][j];
+    }
+  }
+  return stream;
+}
+
+template <typename F1, typename F2, typename F3>
+inline std::ostream& operator <<(std::ostream& stream, const math::Surface<F1, F2, F3>& Phi) {
+  return stream << "Phi(x,y) = (" << Phi.f1 << ", " << Phi.f2 << ", " << Phi.f3 << ")";
+}
+
+template <typename F1, typename F2, typename F3>
+inline std::istream& operator >>(std::istream& stream, math::Surface<F1, F2, F3>& Phi) {
+  return stream >> Phi.f1 >> Phi.f2 >> Phi.f3;
+}
+
 
 #endif

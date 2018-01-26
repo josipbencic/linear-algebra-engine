@@ -121,6 +121,7 @@
     <ClCompile Include="Core\ConsoleApp\ApplicationStateMachine.cpp" />
     <ClCompile Include="Core\Main.cpp" />
     <ClCompile Include="Core\MathStreams.cpp" />
+    <ClCompile Include="Core\Tester\PlaygroundMain.cpp" />
     <ClCompile Include="Core\Tester\TesterMain.cpp" />
     <ClCompile Include="Engine\Algorithms\GaussianElimination.cpp" />
   </ItemGroup>
@@ -132,6 +133,7 @@
     <ClInclude Include="Core\Platform.hpp" />
     <ClInclude Include="Engine\AlgebraicStructures\Mat3.hpp" />
     <ClInclude Include="Engine\AlgebraicStructures\Polynomial.hpp" />
+    <ClInclude Include="Engine\AlgebraicStructures\Polynomial2.hpp" />
     <ClInclude Include="Engine\AlgebraicStructures\RealCoordinateSpace.hpp" />
     <ClInclude Include="Engine\AlgebraicStructures\Surface.hpp" />
     <ClInclude Include="Engine\Algorithms\GaussianElimination.hpp" />

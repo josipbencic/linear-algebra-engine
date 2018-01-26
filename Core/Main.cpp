@@ -1,4 +1,4 @@
-#define CONSOLE_APP 0
+#include "Platform.hpp"
 
 #if CONSOLE_APP > 0
 
@@ -10,11 +10,4 @@ int main() {
     app.showScene();
   }
 }
-
-#else
-
-#ifndef TESTER
-#define TESTER 1
-#endif
-
 #endif

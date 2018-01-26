@@ -19,7 +19,19 @@ namespace math {
   const double PI_DIV_180 =         0.01745329251;
   const double PI_DIV_180_INVERSE = 57.2957795131;
   const double EPSILON =            1e-9;
-}
 
+
+  template <unsigned D>
+  class Polynomial;
+
+  template <unsigned D>
+  using Poly = Polynomial<D>;
+
+  template <unsigned D, typename FIELD_TYPE>
+  class Polynomial2;
+
+  template <unsigned D>
+  using Poly2 = Polynomial2<D, double>;
+}
 
 #endif

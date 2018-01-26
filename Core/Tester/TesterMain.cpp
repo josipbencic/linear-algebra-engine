@@ -1,7 +1,6 @@
-#ifndef TESTER
-#define TESTER 1
-#endif
-#if TESTER > 0
+#include "../Platform.hpp"
+
+#if UNIT_TESTER > 0
 
 #include "../MathStreams.hpp"
 #include "../ConsoleApp/ApplicationStateMachine.hpp"
