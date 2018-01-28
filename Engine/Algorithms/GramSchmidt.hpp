@@ -84,8 +84,7 @@ namespace math {
     VectorSpace vec = vector - orthoProj;
     double s = inner_product(vec, vec);
     double ret = sqrt(s);
-
-    return sqrt(inner_product(orthoProj - vector, orthoProj - vector));
+    return ret;
   }
 }
 
