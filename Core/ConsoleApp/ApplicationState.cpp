@@ -52,7 +52,7 @@ EApplicationState MainMenuState::operator ()(ostream* s) {
   stream << "\t(4)\t System of Linear Equations\n";
   stream << "\t(0)\t Quit\n" << flush;
 
-  char ans = getchar();
+  int ans = getchar();
   while (ans < '0' || ans > '4') {
     ans = getchar();
   }
@@ -80,7 +80,7 @@ math::ESpaces selectSpace(ostream& stream) {
   stream << "\t(6) M3 over Reals\n\n";
   stream << "\t" << flush;
 
-  char spaceNum = getchar();
+  int spaceNum = getchar();
   while (spaceNum < '0' || spaceNum > '6') {
     spaceNum = getchar();
   }
