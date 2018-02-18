@@ -138,6 +138,7 @@
     <ClInclude Include="Engine\AlgebraicStructures\Surface.hpp" />
     <ClInclude Include="Engine\Algorithms\GaussianElimination.hpp" />
     <ClInclude Include="Engine\Algorithms\GramSchmidt.hpp" />
+    <ClInclude Include="Engine\CommonFunctions.hpp" />
     <ClInclude Include="Engine\Constants.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

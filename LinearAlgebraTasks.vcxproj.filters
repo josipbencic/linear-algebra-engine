@@ -66,6 +66,9 @@
     <ClInclude Include="Engine\AlgebraicStructures\Polynomial2.hpp">
       <Filter>Engine\Algebraic Structures</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\CommonFunctions.hpp">
+      <Filter>Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Engine">
