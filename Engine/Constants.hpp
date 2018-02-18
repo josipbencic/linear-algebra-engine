@@ -14,12 +14,12 @@ namespace math {
     LINEARSYSTEM = 7
   };
 
-  const double ROOT_OF_2 =          1.41421356;
-  const double PI =                 3.14159265359;
-  const double PI_DIV_180 =         0.01745329251;
-  const double PI_DIV_180_INVERSE = 57.2957795131;
-  const double EPSILON =            1e-9;
-
+  constexpr double ROOT_OF_2 =          1.41421356;
+  constexpr double PI =                 3.14159265359;
+  constexpr double PI_DIV_180 =         0.01745329251;
+  constexpr double PI_DIV_180_INVERSE = 57.2957795131;
+  constexpr double EPSILON =            1e-9;
+  constexpr double PI_HALF =            PI / 2.0;
 
   template <unsigned D>
   class Polynomial;
