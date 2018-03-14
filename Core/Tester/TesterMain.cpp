@@ -169,18 +169,23 @@ int main() {
 using namespace std;
 
 #include "../../Engine/Algorithms/GaussianElimination.hpp"
+using namespace math;
 
 int main() {
-  vector<vector<double> > v{ {1, 3, 5}, {2, 1, 5} };
+  //vector<vector<double> > v{ {1, 3, 5}, {2, 1, 5} };
   //vector<vector<double> > v{ { 0, 1, 2 },{ 1, 1, 3 } };
 
-  std::vector<double> ans = math::GaussianElimination(v);
-  
-  for (unsigned i = 0; i < ans.size(); i++) {
-    cout << ans[i] << " ";
+  //std::vector<double> ans = math::GaussianElimination(v);
+  vector<vector<double>> L = { {1,0,0}, {2,1,0}, {-3,1,1} };
+  vector<vector<double>> R = { { 2,-1,-1 },{ 0,1,2 },{ 0,0,3 } };
+
+  LinearSolverLR solver(L, R);
+
+  auto v = solver.Solve({ -2, -7, -3 });
+  for (auto x : v) {
+    cout << x << " ";
   }
   cout << endl;
-
   getchar();
 }
 #endif

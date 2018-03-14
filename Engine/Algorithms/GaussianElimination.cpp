@@ -7,8 +7,6 @@
 using namespace std;
 namespace math {
 
-
-  /// NAIVE
   vector<double> GaussianElimination(vector<vector<double>> v) {
     //  Row Echelon form
     auto n = static_cast<int>(v[0].size());
@@ -50,5 +48,53 @@ namespace math {
       ret[i] = v[i][n - 1] / v[i][i];
     }
     return ret;
+  }
+
+  LinearSolverLR::LinearSolverLR(const mat& A) {
+    ComputeLR(A);
+  }
+
+  vector<double> LinearSolverLR::Solve(const vector<double>& b) const {
+    assert(L.size() == b.size());
+    assert(R.size() == b.size());
+    assert(L[0].size() == b.size());
+    assert(R[0].size() == b.size());
+
+    int n = static_cast<int>(b.size());
+
+    //  Solve Ly = b
+    vector<double> y = b;
+    for (int i = 0; i < n; i++) {
+      double tmp_sum = 0.0;
+      for (int j = 0; j < i; j++) {
+        tmp_sum += L[i][j] * y[j];
+      }
+      y[i] -= tmp_sum;
+      y[i] /= L[i][i];
+    }
+
+    //  Solve Lx = y
+    vector<double> x = y;
+    for (int i = n - 1; i >= 0; i--) {
+      double tmp_sum = 0.0;
+      for (int j = i + 1; j < n; j++) {
+        tmp_sum += R[i][j] * x[j];
+      }
+      x[i] -= tmp_sum;
+      x[i] /= R[i][i];
+    }
+    return x;
+  }
+
+  void LinearSolverLR::ComputeLR(const mat& A) {
+    //  Adjust sizes
+    L.resize(A.size());
+    R.resize(A.size());
+    for (unsigned i = 0; i < A.size(); ++i) {
+      L[i].resize(A.size());
+      R[i].resize(A.size());
+    }
+
+    //  TODO
   }
 }
