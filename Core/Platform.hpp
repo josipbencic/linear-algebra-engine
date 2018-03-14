@@ -18,7 +18,8 @@
 
 #define CONSOLE_APP 0
 #define UNIT_TESTER 0
-#define PLAYGROUND_MAIN 1
+#define MATH_MAIN 1
+#define PLAYGROUND_MAIN 0
 
 
 #endif  // PLATFORM_HPP

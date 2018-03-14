@@ -7,8 +7,10 @@
 
 namespace math {
 
-  /*
-    Gaussian elimination on lineary independent set.
+  /*  Assuming the matrix is has full rank (and is quadratic).
+      This is NOT LR algorithm. It's a simple Gaussian elimination,
+      similar to the one done with pen and paper.
+      Pivoting is implemented with equation swapping.
   */
   std::vector<double> GaussianElimination(std::vector<std::vector<double>> v);
 }

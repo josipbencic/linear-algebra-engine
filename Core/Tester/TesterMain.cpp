@@ -16,25 +16,44 @@
 #include <tuple>
 #include <algorithm>
 #include <sstream>
+#include <functional>
 using namespace std;
 using namespace math;
 
 using TestType = tuple<string, EApplicationState, math::ESpaces>;
 
+
+namespace TestTypeTraits {
+
+  template <typename VectorType>
+  struct DistanceFromSubspaceTraits {
+
+  };
+
+  template <typename VectorType>
+  struct GramSchmidtTraits {
+  };
+
+  struct LinearSystemTraits {
+    static void solve(stringstream& in, stringstream& out) {
+      vector<vector<double>> A;
+      InputUtil::readLinearSystemFromStream(A, in);
+
+      auto sol = math::GaussianElimination(A);
+      auto* s = dynamic_cast<ostream*>(&out);
+      OutputUtil::writeLinearSystemSolutionToStream(sol, s);
+    }
+  };
+}
+
 const vector<TestType> tests = {
-  make_tuple( "DistanceFromSubspaceMat3", EApplicationState::DISTANCE_FROM_SUBSPACE, math::ESpaces::M33),
+  make_tuple("DistanceFromSubspaceMat3", EApplicationState::DISTANCE_FROM_SUBSPACE, math::ESpaces::M33),
   make_tuple("GramSchmidtR4", EApplicationState::GRAM_SCHMIDT, math::ESpaces::R4),
   make_tuple("LinearSystem_1", EApplicationState::LINEAR_SYSTEM, math::ESpaces::LINEARSYSTEM),
 };
 
-
 void solveLinearSystem(TestType test, stringstream& in, stringstream& out) {
-  vector<vector<double>> A;
-  InputUtil::readLinearSystemFromStream(A, in);
-
-  auto sol = math::GaussianElimination(A);
-  auto* s = dynamic_cast<ostream*>(&out);
-  OutputUtil::writeLinearSystemSolutionToStream(sol, s);
+  TestTypeTraits::LinearSystemTraits::solve(in, out);
 }
 
 template <typename VectorSpace>
@@ -140,6 +159,27 @@ int main() {
       cout << " -> Failed!" << endl;
     }
   }
+
+  getchar();
+}
+#elif MATH_MAIN > 0
+
+#include <vector>
+#include <iostream>
+using namespace std;
+
+#include "../../Engine/Algorithms/GaussianElimination.hpp"
+
+int main() {
+  vector<vector<double> > v{ {1, 3, 5}, {2, 1, 5} };
+  //vector<vector<double> > v{ { 0, 1, 2 },{ 1, 1, 3 } };
+
+  std::vector<double> ans = math::GaussianElimination(v);
+  
+  for (unsigned i = 0; i < ans.size(); i++) {
+    cout << ans[i] << " ";
+  }
+  cout << endl;
 
   getchar();
 }
