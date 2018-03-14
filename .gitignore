@@ -1,0 +1,10 @@
+#Build files
+
+Release/
+Debug/
+x64/
+x86/
+build/
+
+# Visual studio
+.vs/
