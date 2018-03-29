@@ -17,23 +17,27 @@ namespace math {
   /*  LR Algorithm. Send matrix to precompute L and R, then solve systems
       Ax = b, for any vector b.
   */
-  class LinearSolverLR {
-
+  class LinearSolverLR {        
+    /*  To save space, both matrices are stored inside one. This is possible
+        because L matrix has only 1s on its diagonal and zeros above it, while
+        R has zeros below diagonal.
+    */
     using mat = std::vector<std::vector<double>>;
-    mat L;
-    mat R;
+    
+
+    /*  Permutation matrix is stored as a permutation ordering.
+        It is needed since the algorithm uses partial pivoting to enable higher stability.
+    */
+    std::vector<int> P;
 
   public:
-    LinearSolverLR(mat L, mat R) : L(L), R(R) { }
+    mat LR;
     LinearSolverLR(const mat& A);
 
     std::vector<double> Solve(const std::vector<double>& b) const;
 
   private:
-    void ComputeLR(const mat& A);
-
-    //  O(n^3) naive matrix multiplication
-    void multiply(const mat& A, const mat& B);
+    void PrecomputeLR(const mat& A);
   };
 }
 

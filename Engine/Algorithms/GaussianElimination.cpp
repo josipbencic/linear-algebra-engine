@@ -3,8 +3,10 @@
 #include <iostream>
 #include <vector>
 #include <cassert>
+#include <algorithm>
 
 using namespace std;
+
 namespace math {
 
   vector<double> GaussianElimination(vector<vector<double>> v) {
@@ -12,7 +14,7 @@ namespace math {
     auto n = static_cast<int>(v[0].size());
     for (int iter = 0; iter < n - 2; ++iter) {
 
-      //  if the current pivot is zerox
+      //  if the current pivot is zero
       //  replace the current row with the row that has an
       //  element with max value on pivot position
       if (abs(v[iter][iter]) < EPSILON) {
@@ -51,26 +53,28 @@ namespace math {
   }
 
   LinearSolverLR::LinearSolverLR(const mat& A) {
-    ComputeLR(A);
+    PrecomputeLR(A);
   }
 
   vector<double> LinearSolverLR::Solve(const vector<double>& b) const {
-    assert(L.size() == b.size());
-    assert(R.size() == b.size());
-    assert(L[0].size() == b.size());
-    assert(R[0].size() == b.size());
+    assert(LR.size() == b.size());
+    assert(LR[0].size() == b.size());
 
     int n = static_cast<int>(b.size());
 
+    //  Apply permutation P to b
+    vector<double> y(n, 0.0);
+    for (int i = 0; i < n; i++) {
+      y[i] = b[P[i]];
+    }
+
     //  Solve Ly = b
-    vector<double> y = b;
     for (int i = 0; i < n; i++) {
       double tmp_sum = 0.0;
       for (int j = 0; j < i; j++) {
-        tmp_sum += L[i][j] * y[j];
+        tmp_sum += LR[i][j] * y[j];
       }
       y[i] -= tmp_sum;
-      y[i] /= L[i][i];
     }
 
     //  Solve Lx = y
@@ -78,23 +82,85 @@ namespace math {
     for (int i = n - 1; i >= 0; i--) {
       double tmp_sum = 0.0;
       for (int j = i + 1; j < n; j++) {
-        tmp_sum += R[i][j] * x[j];
+        tmp_sum += LR[i][j] * x[j];
       }
       x[i] -= tmp_sum;
-      x[i] /= R[i][i];
+      x[i] /= LR[i][i];
     }
     return x;
   }
 
-  void LinearSolverLR::ComputeLR(const mat& A) {
-    //  Adjust sizes
-    L.resize(A.size());
-    R.resize(A.size());
-    for (unsigned i = 0; i < A.size(); ++i) {
-      L[i].resize(A.size());
-      R[i].resize(A.size());
+  bool check(const vector<vector<double>>& LR, const vector<vector<double>>& A, 
+      const vector<int>& P) {
+    const int n = static_cast<int>(LR.size());
+    auto L = vector<vector<double>>(n, vector<double>(n, 0.0));
+    auto R = vector<vector<double>>(n, vector<double>(n, 0.0));
+    auto X = vector<vector<double>>(n, vector<double>(n, 0.0));
+    for (int i = 0; i < n; i++) {
+      L[i][i] = 1.0;
+      for (int j = 0; j < i; j++) {
+        L[i][j] = LR[i][j];
+      }
+    }
+    for (int j = 0; j < n; j++) {
+      for (int i = 0; i <= j; i++) {
+        R[i][j] = LR[i][j];
+      }
     }
 
-    //  TODO
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        for (int k = 0; k < n; k++) {
+          X[i][j] += L[i][k] * R[k][j];
+        }
+      }
+    }
+
+    for (int i = 0; i < n; i++) {
+      for (int j = 0; j < n; j++) {
+        if (abs(X[i][j] - A[P[i]][j]) > 1e-5) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  void LinearSolverLR::PrecomputeLR(const mat& A) {
+    const int n = static_cast<int>(A.size());
+    LR = A;
+    P.resize(n);
+    for (int i = 0; i < n; ++i) {
+      P[i] = i;
+    }
+
+    for (int j = 0; j < n - 1; j++) {
+      //  Partial pivoting
+      {
+        int max_pos = j;
+        double max_val = abs(LR[j][j]);
+        for (int i = j + 1; i < n; i++) {
+          if (abs(LR[i][j]) - abs(max_val) > EPSILON) {
+            max_val = abs(LR[i][j]);
+            max_pos = i;
+          }
+        }
+        cout << "Swapping? " << P[j] << " and " << P[max_pos] << endl;
+        swap(P[j], P[max_pos]);
+        swap(LR[j], LR[P[j]]);
+      }
+
+      for (int i = j + 1; i < n; i++) {
+        float scalar = LR[i][j] / LR[j][j];
+        cout << "Cancelling scalar for " << i << " " << j << " is " << scalar << endl;
+        //  Switching sign here, instead of taking an inverse later
+        LR[i][j] = scalar;
+
+        for (int k = j + 1; k < n; k++) {
+          LR[i][k] = LR[i][k] - scalar * LR[j][k];
+        }
+      }
+    }
+    assert(check(LR, A, P));
   }
 }

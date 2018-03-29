@@ -34,6 +34,9 @@ struct OutputUtil {
     std::vector<VectorSpace>& linearHull, std::ostream* stream);
 
   static void writeLinearSystemSolutionToStream(std::vector<double>& ret, std::ostream* stream);
+
+  static void printMatrixScientific(std::vector<std::vector<double>>& M, std::ostream& stream);
+
 };
 
 std::istream& operator >>(std::istream& stream, math::M33& mat);

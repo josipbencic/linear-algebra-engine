@@ -169,14 +169,12 @@ int main() {
 using namespace std;
 
 #include "../../Engine/Algorithms/GaussianElimination.hpp"
+#include "../MathStreams.hpp"
 using namespace math;
 
-int main() {
-  //vector<vector<double> > v{ {1, 3, 5}, {2, 1, 5} };
-  //vector<vector<double> > v{ { 0, 1, 2 },{ 1, 1, 3 } };
-
-  //std::vector<double> ans = math::GaussianElimination(v);
-  vector<vector<double>> L = { {1,0,0}, {2,1,0}, {-3,1,1} };
+/*
+void testLRWithKnownMatrices() {
+  vector<vector<double>> L = { { 1,0,0 },{ 2,1,0 },{ -3,1,1 } };
   vector<vector<double>> R = { { 2,-1,-1 },{ 0,1,2 },{ 0,0,3 } };
 
   LinearSolverLR solver(L, R);
@@ -186,6 +184,26 @@ int main() {
     cout << x << " ";
   }
   cout << endl;
+}
+*/
+
+
+int main() {
+  //vector<vector<double> > v{ {1, 3, 5}, {2, 1, 5} };
+  vector<vector<double> > v{
+    { -3, 4, -1, 3 }, { 12, 18, 0, -12 },
+    {0, -8, -19, -2}, {9, -14, 14, 4}
+  };
+  //vector<double> b{ 2, 3 };
+
+  LinearSolverLR L(v);
+  auto LR = L.LR;
+  OutputUtil::printMatrixScientific(LR, cout);
+
+  //cout << res[0] << " " << res[1] << endl;
+
+  //std::vector<double> ans = math::GaussianElimination(v);
+
   getchar();
 }
 #endif

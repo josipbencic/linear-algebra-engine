@@ -1,4 +1,5 @@
 #include "MathStreams.hpp"
+#include <iomanip>
 
 using namespace std;
 
@@ -29,6 +30,17 @@ void OutputUtil::writeLinearSystemSolutionToStream(std::vector<double>& ret, std
     out << "\tx" << (i + 1) << " = " << ret[i] << "\n";
   }
   out << std::endl;
+}
+
+void OutputUtil::printMatrixScientific(std::vector<std::vector<double>>& M, std::ostream& stream) {
+  stream << std::showpos << std::fixed << std::setprecision(6);
+  for (auto x : M) {
+    for (auto y : x) {
+      stream << y << " ";
+    }
+    stream << "\n";
+  }
+  stream << endl;
 }
 
 std::ostream& operator <<(std::ostream& stream, const math::M33& mat) {
