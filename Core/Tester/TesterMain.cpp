@@ -6,7 +6,7 @@
 #include "../ConsoleApp/ApplicationStateMachine.hpp"
 
 #include "../../Engine/Algorithms/GramSchmidt.hpp"
-#include "../../Engine/Algorithms/GaussianElimination.hpp"
+#include "../../Engine/Algorithms/LinearSystems.hpp"
 
 #include <iostream>
 #include <vector>
@@ -168,12 +168,12 @@ int main() {
 #include <iostream>
 using namespace std;
 
-#include "../../Engine/Algorithms/GaussianElimination.hpp"
+#include "../../Engine/Algorithms/LinearSystems.hpp"
 #include "../MathStreams.hpp"
 using namespace math;
 
 /*
-void testLRWithKnownMatrices() {
+void testLRWithKnownLR() {
   vector<vector<double>> L = { { 1,0,0 },{ 2,1,0 },{ -3,1,1 } };
   vector<vector<double>> R = { { 2,-1,-1 },{ 0,1,2 },{ 0,0,3 } };
 
@@ -194,15 +194,20 @@ int main() {
     { -3, 4, -1, 3 }, { 12, 18, 0, -12 },
     {0, -8, -19, -2}, {9, -14, 14, 4}
   };
-  //vector<double> b{ 2, 3 };
 
   LinearSolverLR L(v);
   auto LR = L.LR;
   OutputUtil::printMatrixScientific(LR, cout);
 
-  //cout << res[0] << " " << res[1] << endl;
-
-  //std::vector<double> ans = math::GaussianElimination(v);
+  vector<vector<double>> w{
+    {4, -2, 14, 6},
+  {-2, 17, -23, -3},
+  {14, -23, 66, 21},
+  {6, -3, 21, 34}
+  };
+  Cholesky Ch(w);
+  OutputUtil::printMatrixScientific(Ch.R, cout);
+  cout << endl;
 
   getchar();
 }

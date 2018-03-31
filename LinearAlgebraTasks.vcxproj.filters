@@ -4,9 +4,6 @@
     <ClCompile Include="Core\Main.cpp">
       <Filter>Core</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Algorithms\GaussianElimination.cpp">
-      <Filter>Engine\Algorithms</Filter>
-    </ClCompile>
     <ClCompile Include="Core\ConsoleApp\ApplicationInputManager.cpp">
       <Filter>Core\ConsoleApp</Filter>
     </ClCompile>
@@ -25,6 +22,9 @@
     <ClCompile Include="Core\Tester\PlaygroundMain.cpp">
       <Filter>Core\Tester</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Algorithms\LinearSystems.cpp">
+      <Filter>Engine\Algorithms</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\AlgebraicStructures\Mat3.hpp">
@@ -37,9 +37,6 @@
       <Filter>Engine\Algebraic Structures</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Algorithms\GramSchmidt.hpp">
-      <Filter>Engine\Algorithms</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Algorithms\GaussianElimination.hpp">
       <Filter>Engine\Algorithms</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Constants.hpp">
@@ -68,6 +65,9 @@
     </ClInclude>
     <ClInclude Include="Engine\CommonFunctions.hpp">
       <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Algorithms\LinearSystems.hpp">
+      <Filter>Engine\Algorithms</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

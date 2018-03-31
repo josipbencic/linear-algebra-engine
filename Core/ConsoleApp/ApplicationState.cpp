@@ -8,7 +8,7 @@
 
 #include "../../Engine/Constants.hpp"
 #include "../../Engine/Algorithms/GramSchmidt.hpp"
-#include "../../Engine/Algorithms/GaussianElimination.hpp"
+#include "../../Engine/Algorithms/LinearSystems.hpp"
 
 #include <iostream>
 #include <string>

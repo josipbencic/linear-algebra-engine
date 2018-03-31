@@ -123,7 +123,7 @@
     <ClCompile Include="Core\MathStreams.cpp" />
     <ClCompile Include="Core\Tester\PlaygroundMain.cpp" />
     <ClCompile Include="Core\Tester\TesterMain.cpp" />
-    <ClCompile Include="Engine\Algorithms\GaussianElimination.cpp" />
+    <ClCompile Include="Engine\Algorithms\LinearSystems.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\ConsoleApp\ApplicationInputManager.hpp" />
@@ -136,7 +136,7 @@
     <ClInclude Include="Engine\AlgebraicStructures\Polynomial2.hpp" />
     <ClInclude Include="Engine\AlgebraicStructures\RealCoordinateSpace.hpp" />
     <ClInclude Include="Engine\AlgebraicStructures\Surface.hpp" />
-    <ClInclude Include="Engine\Algorithms\GaussianElimination.hpp" />
+    <ClInclude Include="Engine\Algorithms\LinearSystems.hpp" />
     <ClInclude Include="Engine\Algorithms\GramSchmidt.hpp" />
     <ClInclude Include="Engine\CommonFunctions.hpp" />
     <ClInclude Include="Engine\Constants.hpp" />
