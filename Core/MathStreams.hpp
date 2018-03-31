@@ -27,15 +27,22 @@ struct InputUtil {
 struct OutputUtil {
 
   template <typename VectorSpace>
-  static void writeGramSchmidtSolutionToStream(std::vector<VectorSpace>& v, std::ostream* stream);
+  static void writeGramSchmidtSolutionToStream(
+    const std::vector<VectorSpace>& v, std::ostream* stream
+  );
 
   template <typename VectorSpace>
   static void writeDistanceFromSubspaceSolutionToStream(
-    std::vector<VectorSpace>& linearHull, std::ostream* stream);
+    std::vector<VectorSpace>& linearHull, std::ostream* stream
+  );
 
-  static void writeLinearSystemSolutionToStream(std::vector<double>& ret, std::ostream* stream);
+  static void writeLinearSystemSolutionToStream(
+    const std::vector<double>& ret, std::ostream* stream
+  );
 
-  static void printMatrixScientific(std::vector<std::vector<double>>& M, std::ostream& stream);
+  static void printMatrixScientific(
+    const std::vector<std::vector<double>>& M, std::ostream& stream
+  );
 
 };
 
@@ -88,7 +95,9 @@ int InputUtil::readVectorSpaceInputFromStream(std::vector<VectorSpace>& space, s
 }
 
 template <typename VectorSpace>
-void OutputUtil::writeGramSchmidtSolutionToStream(std::vector<VectorSpace>& v, std::ostream* stream) {
+void OutputUtil::writeGramSchmidtSolutionToStream(
+  const std::vector<VectorSpace>& v, std::ostream* stream
+) {
   std::ostream& out = *stream;
   out << "\n\t The result:\n\n";
   auto ret = math::GramSchmidt(v);
@@ -98,7 +107,9 @@ void OutputUtil::writeGramSchmidtSolutionToStream(std::vector<VectorSpace>& v, s
 }
 
 template <typename VectorSpace>
-void OutputUtil::writeDistanceFromSubspaceSolutionToStream(std::vector<VectorSpace>& linearHull, std::ostream* stream) {
+void OutputUtil::writeDistanceFromSubspaceSolutionToStream(
+  std::vector<VectorSpace>& linearHull, std::ostream* stream
+) {
 
   std::ostream& out = *stream;
   if (linearHull.empty()) {

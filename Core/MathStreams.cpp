@@ -22,7 +22,9 @@ int InputUtil::readLinearSystemFromStream(
   return 0;
 }
 
-void OutputUtil::writeLinearSystemSolutionToStream(std::vector<double>& ret, std::ostream* stream) {
+void OutputUtil::writeLinearSystemSolutionToStream(
+  const std::vector<double>& ret, std::ostream* stream
+) {
   std::ostream& out = *stream;
 
   out << "\t The result:\n\n";
@@ -32,7 +34,9 @@ void OutputUtil::writeLinearSystemSolutionToStream(std::vector<double>& ret, std
   out << std::endl;
 }
 
-void OutputUtil::printMatrixScientific(std::vector<std::vector<double>>& M, std::ostream& stream) {
+void OutputUtil::printMatrixScientific(
+  const std::vector<std::vector<double>>& M, std::ostream& stream
+) {
   stream << std::showpos << std::fixed << std::setprecision(6);
   for (auto x : M) {
     for (auto y : x) {

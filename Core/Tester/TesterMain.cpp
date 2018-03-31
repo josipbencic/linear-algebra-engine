@@ -166,6 +166,7 @@ int main() {
 
 #include <vector>
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 #include "../../Engine/Algorithms/LinearSystems.hpp"
@@ -188,26 +189,53 @@ void testLRWithKnownLR() {
 */
 
 
+using mat = vector<vector<double>>;
+ostream& operator <<(ostream& stream, const mat& X) {
+  OutputUtil::printMatrixScientific(X, stream);
+  return stream;
+}
+
+
 int main() {
-  //vector<vector<double> > v{ {1, 3, 5}, {2, 1, 5} };
-  vector<vector<double> > v{
+  mat v{
     { -3, 4, -1, 3 }, { 12, 18, 0, -12 },
     {0, -8, -19, -2}, {9, -14, 14, 4}
   };
-
   LinearSolverLR L(v);
-  auto LR = L.LR;
-  OutputUtil::printMatrixScientific(LR, cout);
+  cout << L.LR << endl;
 
-  vector<vector<double>> w{
+
+  mat w{
     {4, -2, 14, 6},
   {-2, 17, -23, -3},
   {14, -23, 66, 21},
   {6, -3, 21, 34}
   };
   Cholesky Ch(w);
-  OutputUtil::printMatrixScientific(Ch.R, cout);
-  cout << endl;
+  cout << Ch.R << endl;;
+
+
+  string str =
+    "2 -1 0 0 0 -1 2 -1 0 0 0 -1 2 -1 0 0 0 -1 2 -1 0 0 0 -1 2";
+  stringstream ss(str);
+  mat X(5, vector<double>(5, 0.0));
+  for (int i = 0; i < 5; i++) {
+    for (int j = 0; j < 5; j++)
+      ss >> X[i][j];
+  }
+  Cholesky Ch2(X);
+  cout << Ch2.R << endl;
+
+  string str2 = "9 0 0 3 0 16 8 -4  0 8 13 -2 3 -4 -2 18";
+  stringstream ss2(str2);
+  mat X2(4, vector<double>(4, 0.0));
+  for (auto& r : X2) {
+    for (auto& x : r) {
+      ss2 >> x;
+    }
+  }
+  Cholesky Ch3(X2);
+  cout << Ch3.R << endl;
 
   getchar();
 }
