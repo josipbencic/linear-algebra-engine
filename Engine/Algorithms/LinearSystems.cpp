@@ -102,7 +102,7 @@ namespace math {
       }
 
       for (int i = j + 1; i < n; i++) {
-        float scalar = LR[i][j] / LR[j][j];
+        double scalar = LR[i][j] / LR[j][j];
         // cout << "Cancelling scalar for " << i << " " << j << " is " << scalar << endl;
          //  Switching sign here, instead of taking an inverse later
         LR[i][j] = scalar;

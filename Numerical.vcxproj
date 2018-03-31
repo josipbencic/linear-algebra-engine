@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A0989AC6-4092-47CE-B5AD-3445680F9B6E}</ProjectGuid>
     <RootNamespace>LinearAlgebraTasks</RootNamespace>
-    <ProjectName>LinearAlgebraEngine</ProjectName>
+    <ProjectName>Numerical</ProjectName>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
