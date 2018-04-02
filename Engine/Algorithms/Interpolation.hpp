@@ -1,6 +1,8 @@
 #ifndef INCLUDED_INTERPOLATION_HPP
 #define INCLUDED_INTERPOLATION_HPP
 
+#include <vector>
+#include <utility>
 
 /*  IP = Interpolation Polynomial
 */
@@ -10,12 +12,38 @@ namespace math {
   */
   class LagrangeIP {
 
+    std::vector<double> A;
+    std::vector<std::pair<double, double>> points;
+
   public:
+    LagrangeIP(const std::vector<std::pair<double, double>>& a);
+
+    inline double operator ()(double x) const {
+      return Evaluate(x);
+    }
+
+  private:
+    void Precompute();
+    double Evaluate(double x) const;
   };
 
   class NewtonIP {
 
-  };
-}
+  public:
+    NewtonIP(const std::vector<std::pair<double, double>>& a);
 
+    inline double operator ()(double x) const {
+      return Evaluate(x);
+    }
+
+  private:
+    void Precompute();
+    double Evaluate(double x) const;
+  };
+
+  struct InterpolationUtil {
+    static double Horner(const std::vector<double>& a);
+  };
+
+}
 #endif
