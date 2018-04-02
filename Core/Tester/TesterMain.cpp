@@ -198,13 +198,33 @@ ostream& operator <<(ostream& stream, const mat& X) {
 
 int main() {
   mat v{
-    { -3, 4, -1, 3 }, { 12, 18, 0, -12 },
+    { -3, 4, -1, 3 }, { 12, -18, 0, -12 },
     {0, -8, -19, -2}, {9, -14, 14, 4}
   };
-  LinearSolverLR L(v);
-  cout << L.LR << endl;
-
-
+  LinearSolverLR sol(v);
+  mat L(4, vector<double>(4, 0.0)), R(4, vector<double>(4, 0.0));
+  for (int i = 0; i < 4; i++) {
+    L[i][i] = 1.0;
+    for (int j = 0; j < i; j++) {
+      L[i][j] = sol.LR[i][j];
+    }
+    for (int j = i; j < 4; j++) {
+      R[i][j] = sol.LR[i][j];
+    }
+  }
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      printf("%g ", L[i][j]);
+    }
+    cout << endl;
+  }
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      printf("%g ", R[i][j]);
+    }
+    cout << endl;
+  }
+  /*
   mat w{
     {4, -2, 14, 6},
   {-2, 17, -23, -3},
@@ -236,7 +256,7 @@ int main() {
   }
   Cholesky Ch3(X2);
   cout << Ch3.R << endl;
-
+  */
   getchar();
 }
 #endif

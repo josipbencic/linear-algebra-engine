@@ -96,17 +96,14 @@ namespace math {
             max_pos = i;
           }
         }
-        // cout << "Swapping? " << P[j] << " and " << P[max_pos] << endl;
         swap(P[j], P[max_pos]);
         swap(LR[j], LR[P[j]]);
       }
 
       for (int i = j + 1; i < n; i++) {
         double scalar = LR[i][j] / LR[j][j];
-        // cout << "Cancelling scalar for " << i << " " << j << " is " << scalar << endl;
-         //  Switching sign here, instead of taking an inverse later
+        //  Switching sign here, instead of taking an inverse later
         LR[i][j] = scalar;
-
         for (int k = j + 1; k < n; k++) {
           LR[i][k] = LR[i][k] - scalar * LR[j][k];
         }

@@ -17,7 +17,7 @@ namespace math {
   /*  LR Algorithm. Send matrix to precompute L and R, then solve systems
       Ax = b, for any vector b.
   */
-  class LinearSolverLR {        
+  class LinearSolverLR {
     /*  To save space, both matrices are stored inside one. This is possible
         because L matrix has only 1s on its diagonal and zeros above it, while
         R has zeros below diagonal.
