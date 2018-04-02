@@ -5,8 +5,8 @@
 #include "../MathStreams.hpp"
 #include "../ConsoleApp/ApplicationStateMachine.hpp"
 
-#include "../../Engine/Algorithms/GramSchmidt.hpp"
-#include "../../Engine/Algorithms/LinearSystems.hpp"
+#include "../../Algorithms/GramSchmidt.hpp"
+#include "../../Algorithms/LinearSystems.hpp"
 
 #include <iostream>
 #include <vector>
@@ -169,7 +169,7 @@ int main() {
 #include <sstream>
 using namespace std;
 
-#include "../../Engine/Algorithms/LinearSystems.hpp"
+#include "../../Algorithms/LinearSystems.hpp"
 #include "../MathStreams.hpp"
 using namespace math;
 

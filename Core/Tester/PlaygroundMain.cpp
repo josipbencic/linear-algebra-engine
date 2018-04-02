@@ -2,14 +2,14 @@
 
 #if PLAYGROUND_MAIN > 0
 
-#include "../../Engine/Constants.hpp"
-
-#include "../../Engine/AlgebraicStructures/Surface.hpp"
-#include "../../Engine/AlgebraicStructures/Polynomial.hpp"
-#include "../../Engine/AlgebraicStructures/Polynomial2.hpp"
-#include "../../Engine/CommonFunctions.hpp"
-
+#include "../../Core/Constants.hpp"
+#include "../../Core/CommonFunctions.hpp"
 #include "../../Core/MathStreams.hpp"
+
+#include "../../AlgebraicStructures/Surface.hpp"
+#include "../../AlgebraicStructures/Polynomial.hpp"
+#include "../../AlgebraicStructures/Polynomial2.hpp"
+
 
 #include <iostream>
 #include <iomanip>

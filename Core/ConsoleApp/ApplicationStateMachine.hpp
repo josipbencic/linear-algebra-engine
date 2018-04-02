@@ -4,7 +4,7 @@
 #include "ApplicationInputManager.hpp"
 #include "ApplicationState.hpp"
 
-#include "../../Engine/Constants.hpp"
+#include "../../Core/Constants.hpp"
 
 #include <cstdlib>
 

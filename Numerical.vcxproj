@@ -116,30 +116,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Algorithms\Interpolation.cpp" />
+    <ClCompile Include="Algorithms\LinearSystems.cpp" />
     <ClCompile Include="Core\ConsoleApp\ApplicationInputManager.cpp" />
     <ClCompile Include="Core\ConsoleApp\ApplicationState.cpp" />
     <ClCompile Include="Core\ConsoleApp\ApplicationStateMachine.cpp" />
-    <ClCompile Include="Core\Main.cpp" />
+    <ClCompile Include="Core\ConsoleAppMain.cpp" />
     <ClCompile Include="Core\MathStreams.cpp" />
     <ClCompile Include="Core\Tester\PlaygroundMain.cpp" />
     <ClCompile Include="Core\Tester\TesterMain.cpp" />
-    <ClCompile Include="Engine\Algorithms\LinearSystems.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AlgebraicStructures\Mat3.hpp" />
+    <ClInclude Include="AlgebraicStructures\Polynomial.hpp" />
+    <ClInclude Include="AlgebraicStructures\Polynomial2.hpp" />
+    <ClInclude Include="AlgebraicStructures\RealCoordinateSpace.hpp" />
+    <ClInclude Include="AlgebraicStructures\Surface.hpp" />
+    <ClInclude Include="Algorithms\GramSchmidt.hpp" />
+    <ClInclude Include="Algorithms\Interpolation.hpp" />
+    <ClInclude Include="Algorithms\LinearSystems.hpp" />
+    <ClInclude Include="Core\CommonFunctions.hpp" />
     <ClInclude Include="Core\ConsoleApp\ApplicationInputManager.hpp" />
     <ClInclude Include="Core\ConsoleApp\ApplicationState.hpp" />
     <ClInclude Include="Core\ConsoleApp\ApplicationStateMachine.hpp" />
+    <ClInclude Include="Core\Constants.hpp" />
     <ClInclude Include="Core\MathStreams.hpp" />
     <ClInclude Include="Core\Platform.hpp" />
-    <ClInclude Include="Engine\AlgebraicStructures\Mat3.hpp" />
-    <ClInclude Include="Engine\AlgebraicStructures\Polynomial.hpp" />
-    <ClInclude Include="Engine\AlgebraicStructures\Polynomial2.hpp" />
-    <ClInclude Include="Engine\AlgebraicStructures\RealCoordinateSpace.hpp" />
-    <ClInclude Include="Engine\AlgebraicStructures\Surface.hpp" />
-    <ClInclude Include="Engine\Algorithms\LinearSystems.hpp" />
-    <ClInclude Include="Engine\Algorithms\GramSchmidt.hpp" />
-    <ClInclude Include="Engine\CommonFunctions.hpp" />
-    <ClInclude Include="Engine\Constants.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

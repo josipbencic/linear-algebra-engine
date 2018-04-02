@@ -1,6 +1,6 @@
 #include "Interpolation.hpp"
 
-#include "../Constants.hpp"
+#include "../Core/Constants.hpp"
 
 #include <vector>
 

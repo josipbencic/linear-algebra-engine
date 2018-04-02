@@ -1,7 +1,7 @@
 #ifndef POLYNOMIAL_HPP
 #define POLYNOMIAL_HPP
 
-#include "../../Engine/Constants.hpp" // EPSILON
+#include "../../Core/Constants.hpp" // EPSILON
 
 #include <cstring>  // memset
 #include <cmath>  // sqrt

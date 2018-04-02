@@ -1,11 +1,11 @@
 #ifndef MATH_STREAMS_HPP
 #define MATH_STREAMS_HPP
 
-#include "../Engine/AlgebraicStructures/RealCoordinateSpace.hpp"
-#include "../Engine/AlgebraicStructures/Mat3.hpp"
-#include "../Engine/AlgebraicStructures/Polynomial.hpp"
-#include "../Engine/AlgebraicStructures/Polynomial2.hpp"
-#include "../Engine/AlgebraicStructures/Surface.hpp"
+#include "../AlgebraicStructures/RealCoordinateSpace.hpp"
+#include "../AlgebraicStructures/Mat3.hpp"
+#include "../AlgebraicStructures/Polynomial.hpp"
+#include "../AlgebraicStructures/Polynomial2.hpp"
+#include "../AlgebraicStructures/Surface.hpp"
 
 #include <iostream>
 #include <ostream>

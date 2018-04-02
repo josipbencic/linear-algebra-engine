@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Core\Main.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="Core\ConsoleApp\ApplicationInputManager.cpp">
       <Filter>Core\ConsoleApp</Filter>
     </ClCompile>
@@ -22,26 +19,17 @@
     <ClCompile Include="Core\Tester\PlaygroundMain.cpp">
       <Filter>Core\Tester</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Algorithms\LinearSystems.cpp">
-      <Filter>Engine\Algorithms</Filter>
+    <ClCompile Include="Core\ConsoleAppMain.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\Interpolation.cpp">
+      <Filter>Algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="Algorithms\LinearSystems.cpp">
+      <Filter>Algorithms</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine\AlgebraicStructures\Mat3.hpp">
-      <Filter>Engine\Algebraic Structures</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\AlgebraicStructures\Polynomial.hpp">
-      <Filter>Engine\Algebraic Structures</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\AlgebraicStructures\RealCoordinateSpace.hpp">
-      <Filter>Engine\Algebraic Structures</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Algorithms\GramSchmidt.hpp">
-      <Filter>Engine\Algorithms</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Constants.hpp">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Core\Platform.hpp">
       <Filter>Core</Filter>
     </ClInclude>
@@ -57,29 +45,38 @@
     <ClInclude Include="Core\MathStreams.hpp">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\AlgebraicStructures\Surface.hpp">
-      <Filter>Engine\Algebraic Structures</Filter>
+    <ClInclude Include="AlgebraicStructures\Mat3.hpp">
+      <Filter>Algebraic Structures</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\AlgebraicStructures\Polynomial2.hpp">
-      <Filter>Engine\Algebraic Structures</Filter>
+    <ClInclude Include="AlgebraicStructures\Polynomial.hpp">
+      <Filter>Algebraic Structures</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\CommonFunctions.hpp">
-      <Filter>Engine</Filter>
+    <ClInclude Include="AlgebraicStructures\Polynomial2.hpp">
+      <Filter>Algebraic Structures</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Algorithms\LinearSystems.hpp">
-      <Filter>Engine\Algorithms</Filter>
+    <ClInclude Include="AlgebraicStructures\RealCoordinateSpace.hpp">
+      <Filter>Algebraic Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="AlgebraicStructures\Surface.hpp">
+      <Filter>Algebraic Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithms\GramSchmidt.hpp">
+      <Filter>Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithms\Interpolation.hpp">
+      <Filter>Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithms\LinearSystems.hpp">
+      <Filter>Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\CommonFunctions.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Constants.hpp">
+      <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Engine">
-      <UniqueIdentifier>{d7955736-ee88-4e64-b679-adeb436ad726}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Algorithms">
-      <UniqueIdentifier>{c17374f3-c813-4506-9760-a1fe6a96e615}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\Algebraic Structures">
-      <UniqueIdentifier>{4a7539f5-ed9d-4753-83b3-6186f6ed961a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core">
       <UniqueIdentifier>{b3f3e938-ecaa-454a-a535-7e34fba57a4b}</UniqueIdentifier>
     </Filter>
@@ -88,6 +85,12 @@
     </Filter>
     <Filter Include="Core\ConsoleApp">
       <UniqueIdentifier>{66304d76-0d12-4f5d-b5bd-284a7426fea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algebraic Structures">
+      <UniqueIdentifier>{4a7539f5-ed9d-4753-83b3-6186f6ed961a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithms">
+      <UniqueIdentifier>{c17374f3-c813-4506-9760-a1fe6a96e615}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

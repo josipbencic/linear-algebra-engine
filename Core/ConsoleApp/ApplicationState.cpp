@@ -5,10 +5,10 @@
 
 #include "../../Core/Platform.hpp"
 #include "../../Core/MathStreams.hpp"
+#include "../../Core/Constants.hpp"
 
-#include "../../Engine/Constants.hpp"
-#include "../../Engine/Algorithms/GramSchmidt.hpp"
-#include "../../Engine/Algorithms/LinearSystems.hpp"
+#include "../../Algorithms/GramSchmidt.hpp"
+#include "../../Algorithms/LinearSystems.hpp"
 
 #include <iostream>
 #include <string>
