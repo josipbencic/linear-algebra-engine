@@ -197,12 +197,16 @@ ostream& operator <<(ostream& stream, const mat& X) {
 
 
 int main() {
-  mat v{
-    { -3, 4, -1, 3 }, { 12, -18, 0, -12 },
-    {0, -8, -19, -2}, {9, -14, 14, 4}
-  };
-  LinearSolverLR sol(v);
-  mat L(4, vector<double>(4, 0.0)), R(4, vector<double>(4, 0.0));
+  stringstream ss("1 -1 0 1 -1 3 -1 2 2 -4 0 6 1 3 -1 3");
+  mat m(4, vector<double>(4, 0.0));
+  for (int i = 0; i < 4; i++) {
+    for (int j = 0; j < 4; j++) {
+      ss >> m[i][j];
+    }
+  }
+  LinearSolverLR sol(m);
+  mat L(4, vector<double>(4, 0.0));
+  mat R(4, vector<double>(4, 0.0));
   for (int i = 0; i < 4; i++) {
     L[i][i] = 1.0;
     for (int j = 0; j < i; j++) {

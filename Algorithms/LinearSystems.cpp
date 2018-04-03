@@ -79,7 +79,11 @@ namespace math {
     }
 
     auto X = LinearSystemsUtil::Multiply(L, R);
-    return LinearSystemsUtil::EqualWithRowPerm(A, X, 1e-5, P);
+    if (!LinearSystemsUtil::EqualWithRowPerm(A, X, 1e-5, P)) {
+      assert(false);
+      return false;
+    }
+    return true;
   }
 
   void LinearSolverLR::PrecomputeLR(const mat& A) {
@@ -96,8 +100,8 @@ namespace math {
             max_pos = i;
           }
         }
+        swap(LR[j], LR[max_pos]);
         swap(P[j], P[max_pos]);
-        swap(LR[j], LR[P[j]]);
       }
 
       for (int i = j + 1; i < n; i++) {
@@ -109,7 +113,7 @@ namespace math {
         }
       }
     }
-    assert(VerifyPrecompute(A));
+    VerifyPrecompute(A);
   }
 
   vector<double> LinearSolverLR::Solve(const vector<double>& b) const {
@@ -156,7 +160,11 @@ namespace math {
 
   bool Cholesky::VerifyPrecompute(const mat& A) const {
     auto X = LinearSystemsUtil::MultiplyTransposed(R, R);
-    return LinearSystemsUtil::EqualWithRowPerm(X, A);
+    if (!LinearSystemsUtil::EqualWithRowPerm(X, A)) {
+      assert(false);
+      return false;
+    }
+    return true;
   }
 
   vector<double> Cholesky::Solve(const vector<double>& b) const {
