@@ -170,6 +170,7 @@ int main() {
 using namespace std;
 
 #include "../../Algorithms/LinearSystems.hpp"
+#include "../../Algorithms/Interpolation.hpp"
 #include "../MathStreams.hpp"
 using namespace math;
 
@@ -195,9 +196,31 @@ ostream& operator <<(ostream& stream, const mat& X) {
   return stream;
 }
 
-
 int main() {
-  stringstream ss("1 -1 0 1 -1 3 -1 2 2 -4 0 6 1 3 -1 3");
+  //  stringstream ss("1 -1 2 0 1 -2 1 3 3 -1 0 1 0 1 3 1");
+  /*
+  stringstream ss("8 6 10 -4 4 2 2 -7 -4 1 2 3 2 3 7 7");
+  vector<vector<double>> v(4, vector<double>(4, 0));
+  for (int i = 0; i < 4; i++)
+    for (int j = 0; j < 4; j++) {
+      double x; ss >> x;
+      v[i][j] = x;
+    }
+
+  LinearSolverLR solver(v);
+  OutputUtil::printMatrixScientific(solver.LR, cout);
+  auto x = solver.Solve({ -30, 1, -20, 7 });
+  for (auto& z : x) {
+    cout << z << " ";
+  }
+  cout << endl;
+  */
+
+  /*
+  // LR
+
+  //stringstream ss("1 -1 0 1 -1 3 -1 2 2 -4 0 6 1 3 -1 3");
+  stringstream ss("-3 4 -1 3 12 -18	0 -12 0 -8 -19 -2 9 -14 14 4");
   mat m(4, vector<double>(4, 0.0));
   for (int i = 0; i < 4; i++) {
     for (int j = 0; j < 4; j++) {
@@ -228,7 +251,11 @@ int main() {
     }
     cout << endl;
   }
+  */
+
   /*
+
+    // CHOLESKY
   mat w{
     {4, -2, 14, 6},
   {-2, 17, -23, -3},
@@ -249,8 +276,10 @@ int main() {
   }
   Cholesky Ch2(X);
   cout << Ch2.R << endl;
+  */
 
-  string str2 = "9 0 0 3 0 16 8 -4  0 8 13 -2 3 -4 -2 18";
+  //string str2 = "9 0 0 3 0 16 8 -4  0 8 13 -2 3 -4 -2 18";
+  string str2 = "16 4 -8 0 4 26 -2 -10 -8 -2 24 -12 0 -10 -12 29";
   stringstream ss2(str2);
   mat X2(4, vector<double>(4, 0.0));
   for (auto& r : X2) {
@@ -260,6 +289,27 @@ int main() {
   }
   Cholesky Ch3(X2);
   cout << Ch3.R << endl;
+/*
+  
+  //  IP
+    */
+
+  /*
+  stringstream ss("0 -3 1 -4 2 -7 4 -115 5 -268");
+  vector<pair<double, double>> v;
+  for (int i = 0; i < 5; i++) {
+    double x, y; ss >> x >> y;
+    v.push_back({x, y});
+  }
+  NewtonIP nw(v);
+  for (auto x : nw.x) {
+    cout << x << " ";
+  }
+  cout << endl;
+  for (auto f : nw.f) {
+    cout << f << " ";
+  }
+  cout << endl;
   */
   getchar();
 }
