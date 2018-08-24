@@ -1,14 +1,7 @@
-#include "../Platform.hpp"
-
-#if PLAYGROUND_MAIN > 0
-
-#include "../../Core/Constants.hpp"
-#include "../../Core/CommonFunctions.hpp"
-#include "../../Core/MathStreams.hpp"
-
-#include "../../AlgebraicStructures/Surface.hpp"
-#include "../../AlgebraicStructures/Polynomial.hpp"
-#include "../../AlgebraicStructures/Polynomial2.hpp"
+#include "CommonFunctions.hpp"
+#include "AlgebraicStructures/Surface.hpp"
+#include "AlgebraicStructures/Polynomial.hpp"
+#include "AlgebraicStructures/Polynomial2.hpp"
 
 
 #include <iostream>
@@ -58,4 +51,3 @@ int main() {
   testTrig(rad(-90), rad(180), rad(3));
   getchar();
 }
-#endif

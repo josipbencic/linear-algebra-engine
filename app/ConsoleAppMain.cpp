@@ -1,8 +1,6 @@
 #include "Platform.hpp"
 
-#if CONSOLE_APP > 0
-
-#include "../Core/ConsoleApp/ApplicationStateMachine.hpp"
+#include "ApplicationStateMachine.hpp"
 
 int main() {
   ApplicationStateMachine app;
@@ -10,4 +8,3 @@ int main() {
     app.showScene();
   }
 }
-#endif

@@ -1,13 +1,11 @@
 #ifndef INCLUDED_APPLICATION_INPUT_MANAGER_HPP
 #define INCLUDED_APPLICATION_INPUT_MANAGER_HPP
 
-#include "../../Core/Constants.hpp"
-#include "../../Core/MathStreams.hpp"
-
-#include "../../AlgebraicStructures/RealCoordinateSpace.hpp"
-#include "../../AlgebraicStructures/Polynomial.hpp"
-#include "../../AlgebraicStructures/Mat3.hpp"
-
+#include "../src/MathStreams.hpp"
+#include "../src/Constants.hpp"
+#include "../src/AlgebraicStructures/RealCoordinateSpace.hpp"
+#include "../src/AlgebraicStructures/Polynomial.hpp"
+#include "../src/AlgebraicStructures/Mat3.hpp"
 
 #include <vector>
 #include <string>

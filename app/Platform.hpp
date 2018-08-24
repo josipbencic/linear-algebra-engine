@@ -12,14 +12,6 @@
 
 #else
 # define CLEAR ""
-#endif  //  OS
+#endif
 
-
-
-#define CONSOLE_APP 0
-#define UNIT_TESTER 0
-#define MATH_MAIN 1
-#define PLAYGROUND_MAIN 0
-
-
-#endif  // PLATFORM_HPP
+#endif

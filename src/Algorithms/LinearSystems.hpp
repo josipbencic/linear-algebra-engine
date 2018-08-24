@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "../../Core/Constants.hpp"
+#include "../Constants.hpp"
 
 namespace math {
 

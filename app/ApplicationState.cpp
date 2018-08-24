@@ -3,12 +3,12 @@
 #include "ApplicationStateMachine.hpp"
 #include "ApplicationInputManager.hpp"
 
-#include "../../Core/Platform.hpp"
-#include "../../Core/MathStreams.hpp"
-#include "../../Core/Constants.hpp"
+#include "Platform.hpp"
 
-#include "../../Algorithms/GramSchmidt.hpp"
-#include "../../Algorithms/LinearSystems.hpp"
+#include "../src/MathStreams.hpp"
+#include "../src/Constants.hpp"
+#include "../src/Algorithms/GramSchmidt.hpp"
+#include "../src/Algorithms/LinearSystems.hpp"
 
 #include <iostream>
 #include <string>

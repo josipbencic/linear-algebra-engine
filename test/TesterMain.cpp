@@ -1,12 +1,5 @@
-#include "../Platform.hpp"
-
-#if UNIT_TESTER > 0
-
-#include "../MathStreams.hpp"
-#include "../ConsoleApp/ApplicationStateMachine.hpp"
-
-#include "../../Algorithms/GramSchmidt.hpp"
-#include "../../Algorithms/LinearSystems.hpp"
+#include "../src/Algorithms/GramSchmidt.hpp"
+#include "../src/Algorithms/LinearSystems.hpp"
 
 #include <iostream>
 #include <vector>
@@ -20,6 +13,7 @@
 using namespace std;
 using namespace math;
 
+/*/
 using TestType = tuple<string, EApplicationState, math::ESpaces>;
 
 
@@ -162,16 +156,17 @@ int main() {
 
   getchar();
 }
-#elif MATH_MAIN > 0
+
+*/
 
 #include <vector>
 #include <iostream>
 #include <sstream>
 using namespace std;
 
-#include "../../Algorithms/LinearSystems.hpp"
-#include "../../Algorithms/Interpolation.hpp"
-#include "../MathStreams.hpp"
+#include "../src/Algorithms/LinearSystems.hpp"
+#include "../src/Algorithms/Interpolation.hpp"
+#include "../src/MathStreams.hpp"
 using namespace math;
 
 /*
@@ -313,4 +308,3 @@ int main() {
   */
   getchar();
 }
-#endif

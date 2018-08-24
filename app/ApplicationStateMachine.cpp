@@ -1,6 +1,6 @@
 #include "ApplicationStateMachine.hpp"
 
-#include "../../Core/Platform.hpp"
+#include "Platform.hpp"
 
 using namespace std;
 
