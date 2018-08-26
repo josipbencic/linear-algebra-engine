@@ -1,5 +1,9 @@
 add_executable(test
-  TesterMain.cpp
+  Main.cpp
+  Tester.cpp
+  Tester.hpp
+  Algorithms/LinearSystemsTests.hpp
+  Algorithms/LinearSystemsTests.cpp
 )
 
 target_link_libraries("test" "numerical")

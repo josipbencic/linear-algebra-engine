@@ -5,6 +5,8 @@ Debug/
 x64/
 x86/
 build/
+input/*
 
 # Visual studio code
 .vs/
+

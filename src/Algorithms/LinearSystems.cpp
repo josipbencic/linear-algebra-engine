@@ -155,7 +155,7 @@ namespace math {
         R[i][j] = (1 / R[i][i]) * (A[i][j] - S);
       }
     }
-    VerifyPrecompute(A);
+   // VerifyPrecompute(A);
   }
 
   bool Cholesky::VerifyPrecompute(const mat& A) const {
