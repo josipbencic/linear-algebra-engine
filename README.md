@@ -2,8 +2,7 @@
 
 ### ABOUT ###
 
-This is a Linear Algebra exam solver.
-It was started back in 2016, while I was completing Linear Algebra 2 course.
+This was started back in 2016, while I was completing Linear Algebra 2 course, as a solver for some exam tasks.
 I have implemented an algorithm for Gram-Schmidt Orthonomalization to verify the solutions during task solving.
 Later on, I have started to use this codebase as a Math playground for some other concepts, implementing algorithms from Numerical mathematics course and similar.
 
