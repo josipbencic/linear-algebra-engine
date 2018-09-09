@@ -2,18 +2,11 @@
 
 ### ABOUT ###
 
-This is a Linear Algebra exam solver.
-In 2016, I was completing Linear Algebra 2 course. As almost every other student on this course, I have solved a couple of tasks with the Gram-Schmidt Orthonormalization Algorithm who, after only few iterations, got very ugly numbers. That was a real motivation killer, especially if I've made an error somewhere. To verify the solutions during task solving, I have written a C++ implementation of Gram Schmidt algorithm on various Inner Product Spaces. Later on, I have started to use this codebase as a Math playground for some other concepts.
+This was started back in 2016, while I was completing Linear Algebra 2 course, as a solver for some exam tasks.
+I have implemented an algorithm for Gram-Schmidt Orthonomalization to verify the solutions during task solving.
+Later on, I have started to use this codebase as a Math playground for some other concepts, implementing algorithms from Numerical mathematics course and similar.
 
-### How to set up? ###
-
-It was built with Visual Studio 2017, so that will work. There are a couple of ways to use try this project out.
-To try out the interface and possibilities it is best to use it from the PlaygroundMain.cpp. Just set the appropriate defines in Platform.hpp and rebuild.
-
-To use it as a console application:
-Set define CONSOLE_APP in Platform.hpp to 1 and all other to 0.
-After build, add your input in Input directory named "input.txt". There is a builtin input tutorial. Application has no GUI, so input is done with file input.
-
-
-  
-  
+There are 3 targets: playground, app and tests.
+Playground has access to whole library to try things out as I develop.
+App is a terminal-based wrapper around the library that I made for others to use the algorithm. It could be broken since I have stopped developing it long time ago.
+There no dependencies and everything should build on any OS via CMake. However, the app target was only tested on Windows.
