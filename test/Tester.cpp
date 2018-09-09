@@ -16,6 +16,9 @@ using namespace std;
 Tester::Tester() {
   auto choleskyTests = createTests<CholeskyTests>();
   tests.insert(begin(choleskyTests), end(choleskyTests));
+
+  auto lrTests = createTests<LinearSolverLRTests>();
+  tests.insert(begin(lrTests), end(lrTests));
 }
 
 bool Tester::run() {

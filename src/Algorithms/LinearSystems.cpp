@@ -95,7 +95,7 @@ namespace math {
         int max_pos = j;
         double max_val = abs(LR[j][j]);
         for (int i = j + 1; i < n; i++) {
-          if (abs(LR[i][j]) - abs(max_val) > EPSILON) {
+          if (abs(abs(LR[i][j]) - abs(max_val)) > EPSILON) {
             max_val = abs(LR[i][j]);
             max_pos = i;
           }
@@ -185,11 +185,9 @@ namespace math {
     const int n = static_cast<int>(U.size());
     vector<double> x = y;
     for (int i = n - 1; i >= 0; i--) {
-      double tmp_sum = 0.0;
       for (int j = i + 1; j < n; j++) {
-        tmp_sum += U[i][j] * x[j];
+        x[i] -= U[i][j] * x[j];
       }
-      x[i] -= tmp_sum;
       x[i] /= U[i][i];
     }
     return x;
@@ -202,11 +200,9 @@ namespace math {
     auto x = y;
     //  Solve Ly = b
     for (int i = 0; i < n; i++) {
-      double tmp_sum = 0.0;
       for (int j = 0; j < i; j++) {
-        tmp_sum += L[i][j] * x[j];
+        x[i] -= L[i][j] * x[j];
       }
-      x[i] -= tmp_sum;
     }
     return x;
   }

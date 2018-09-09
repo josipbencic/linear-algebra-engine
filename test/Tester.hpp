@@ -9,6 +9,7 @@
 #include <functional>
 #include <string>
 #include <vector>
+#include <iostream>
 
 class Tester {
 
@@ -22,9 +23,7 @@ public:
 private:
 
   template <typename T>
-  std::map<std::string, std::function<bool()>> createTests();
-
-  std::vector<double> parseFileToNumbers(const std::string& fileName);
+  static std::map<std::string, std::function<bool()>> createTests();
 };
 
 template <typename T>
@@ -33,29 +32,34 @@ std::map<std::string, std::function<bool()>> Tester::createTests() {
   std::map<std::string, std::function<bool()>> ret;
   T testGroup;
   for (auto& test : testGroup.tests) {
-    auto& testName = get<0>(test);
-    auto& testData = get<1>(test);
-    auto& testSize = get<2>(test);
-    auto& testSolution = get<3>(test);
+    auto& testName = std::get<0>(test);
+    auto& testInput = std:: get<1>(test);
+    auto& testSize = std::get<2>(test);
+    auto& testSolution = std::get<3>(test);
 
     stringstream solutionStream(testSolution);
-    vector<double> correctSolution(testSize * testSize);
-    for (auto& x : correctSolution) {
-      solutionStream >> x;
+    vector<double> correctSolution;
+    {
+      double x;
+      while (solutionStream >> x) {
+        correctSolution.push_back(x);
+      }
     }
+    auto testPredicate = [correctSolution, testInput, testSize]()->bool {
+      vector<double> solution = T::solve(testInput, testSize);
 
-    auto testPredicate = [correctSolution, testData, testSize]()->bool {
-      T::Solver solver{ T::transformInput(testData, testSize) };
-      T::solve(solver);
-      vector<double> solution = T::transformSolution(solver);
+      if (solution.size() != correctSolution.size()) {
+        std::cout << " [Solutions are of different sizes] ";
+        return false;
+      }
 
-      auto iter = mismatch(
-        begin(solution), end(solution), begin(correctSolution), end(correctSolution),
-        [](double a, double b) -> bool {
-          return abs(a - b) > math::EPSILON;
-       });
-
-      return iter.first != end(solution) || iter.second != end(correctSolution);
+      for (int i = 0; i < (int)solution.size(); i++) {
+        if (abs(solution[i] - correctSolution[i]) > T::EPSILON) {
+          std::cout << " [Solution wrong at: " << solution[i] << " instead of " << correctSolution[i] << "] ";
+          return false;
+        }
+      }
+      return true;
     };
     ret[testName] = testPredicate;
   }
