@@ -19,6 +19,12 @@ Tester::Tester() {
 
   auto lrTests = createTests<LinearSolverLRTests>();
   tests.insert(begin(lrTests), end(lrTests));
+
+  auto newtonIPTests = createTests<NewtonIPTests>();
+  tests.insert(begin(newtonIPTests), end(newtonIPTests));
+
+  auto lagrangeIPTests = createTests<LagrangeIPTests>();
+  tests.insert(begin(lagrangeIPTests), end(lagrangeIPTests));
 }
 
 bool Tester::run() {
@@ -41,22 +47,4 @@ bool Tester::run() {
     cout << "Tests failed." << endl;
   }
   return ans;
-}
-
-void test_NewtonIP1() {
-  stringstream ss("0 -3 1 -4 2 -7 4 -115 5 -268");
-  vector<pair<double, double>> v;
-  for (int i = 0; i < 5; i++) {
-    double x, y; ss >> x >> y;
-    v.push_back({ x, y });
-  }
-  NewtonIP nw(v);
-  for (auto x : nw.x) {
-    cout << x << " ";
-  }
-  cout << endl;
-  for (auto f : nw.f) {
-    cout << f << " ";
-  }
-  cout << endl;
 }

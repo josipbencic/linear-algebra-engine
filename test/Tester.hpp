@@ -2,6 +2,7 @@
 #define TESTER_HPP
 
 #include "Algorithms/LinearSystemsTests.hpp"
+#include "Algorithms/InterpolationTests.hpp"
 
 #include "../src/Constants.hpp"
 
@@ -49,7 +50,15 @@ std::map<std::string, std::function<bool()>> Tester::createTests() {
       vector<double> solution = T::solve(testInput, testSize);
 
       if (solution.size() != correctSolution.size()) {
-        std::cout << " [Solutions are of different sizes] ";
+        std::cout << " [Solutions are of different sizes]: provided ";
+        for (auto& x : solution) {
+          cout << x << " ";
+        }
+        cout << " while expecting ";
+        for (auto& x : correctSolution) {
+          cout << x << " ";
+        }
+        cout << endl;
         return false;
       }
 

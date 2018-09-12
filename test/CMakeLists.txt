@@ -4,6 +4,8 @@ add_executable(test
   Tester.hpp
   Algorithms/LinearSystemsTests.hpp
   Algorithms/LinearSystemsTests.cpp
+  Algorithms/InterpolationTests.hpp
+  Algorithms/InterpolationTests.cpp
 )
 
 target_link_libraries("test" "numerical")
