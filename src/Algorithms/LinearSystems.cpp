@@ -4,6 +4,7 @@
 #include <vector>
 #include <cassert>
 #include <algorithm>
+#include <cmath>
 
 using namespace std;
 

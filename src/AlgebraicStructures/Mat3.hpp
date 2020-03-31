@@ -1,7 +1,7 @@
 #ifndef MAT3_HPP
 #define MAT3_HPP
 
-#include "../src/Constants.hpp"
+#include "../Constants.hpp"
 
 #include <cmath>
 #include <cstring>

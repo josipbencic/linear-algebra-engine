@@ -9,4 +9,5 @@ input/*
 
 # Visual studio code
 .vs/
+.vscode/
 

@@ -3,6 +3,8 @@
 
 #include "RealCoordinateSpace.hpp"
 
+#include <utility>
+
 namespace math {
 
   template <typename F1, typename F2, typename F3, typename REAL_TYPE = double>

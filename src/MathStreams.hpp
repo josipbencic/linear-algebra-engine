@@ -6,6 +6,7 @@
 #include "../src/AlgebraicStructures/Polynomial.hpp"
 #include "../src/AlgebraicStructures/Polynomial2.hpp"
 #include "../src/AlgebraicStructures/Surface.hpp"
+#include "../src/Algorithms/GramSchmidt.hpp"
 
 #include <iostream>
 #include <ostream>
@@ -46,38 +47,59 @@ struct OutputUtil {
 
 };
 
+template <unsigned DIM__>
+std::ostream& operator <<(std::ostream& stream, const math::Rn<DIM__>& vector) {
+  stream << "(";
+  for (size_t i = 0; i < DIM__ - 1; i++) {
+    stream << vector.component[i] << ", ";
+  }
+  return stream << vector.component[DIM__ - 1] << ")";
+}
+
+template <unsigned DIM__>
+std::istream& operator >>(std::istream& stream, math::Rn<DIM__>& vector) {
+  for (size_t i = 0; i < DIM__; i++) {
+    stream >> vector.component[i];
+  }
+  return stream;
+}
+
 std::istream& operator >>(std::istream& stream, math::M33& mat);
 
 std::ostream& operator <<(std::ostream& stream, const math::M33& mat);
 
-template <unsigned DIM__>
-inline std::ostream& operator <<(std::ostream& stream, const math::Rn<DIM__>& vector);
+template <unsigned DEGREE_>
+inline std::istream& operator >>(std::istream& stream, math::Polynomial2<DEGREE_>& p) {
+  for (std::size_t i = 0; i <= DEGREE_; i++) {
+    for (std::size_t j = 0; j <= DEGREE_; j++) {
+      stream >> p.coefficient[i][j];
+    }
+  }
+  return stream;
+}
 
-template <unsigned DIM__>
-inline std::istream& operator >>(std::istream& stream, math::Rn<DIM__>& vector);
+template <typename F1, typename F2, typename F3>
+inline std::ostream& operator <<(std::ostream& stream, const math::Surface<F1, F2, F3>& Phi) {
+  return stream << "Phi(x,y) = (" << Phi.f1 << ", " << Phi.f2 << ", " << Phi.f3 << ")";
+}
+
+template <typename F1, typename F2, typename F3>
+inline std::istream& operator >>(std::istream& stream, math::Surface<F1, F2, F3>& Phi) {
+  return stream >> Phi.f1 >> Phi.f2 >> Phi.f3;
+}
 
 template <unsigned DEGREE_>
 inline std::ostream& operator <<(std::ostream& stream, const math::Polynomial<DEGREE_>& p);
 
 template <unsigned DEGREE_>
-inline std::istream& operator >>(std::istream& stream, math::Polynomial<DEGREE_>& p);
-
-template <unsigned DEGREE_>
-inline std::ostream& operator <<(std::ostream& stream, const math::Polynomial2<DEGREE_>& p);
-
-template <unsigned DEGREE_>
 inline std::istream& operator >>(std::istream& stream, math::Polynomial2<DEGREE_>& p);
 
-template <typename F1, typename F2, typename F3>
-inline std::ostream& operator <<(std::ostream& stream, const math::Surface<F1, F2, F3>& Phi);
-
-template <typename F1, typename F2, typename F3>
-inline std::istream& operator >>(std::istream& stream, math::Surface<F1, F2, F3>& Phi);
 
 //  Implementation
 
 template<typename VectorSpace>
-int InputUtil::readVectorSpaceInputFromStream(std::vector<VectorSpace>& space, std::stringstream& stream) {
+int InputUtil::readVectorSpaceInputFromStream(
+  std::vector<VectorSpace>& space, std::stringstream& stream) {
   unsigned vectorNum;
   stream >> vectorNum;
 
@@ -121,24 +143,6 @@ void OutputUtil::writeDistanceFromSubspaceSolutionToStream(
   double distance = distanceFromSpace(linearHull, v);
   out << "\n\t The distance is:\n\n";
   out << distance << std::endl;
-}
-
-template <unsigned DIM__>
-inline std::ostream& operator <<(std::ostream& stream, const math::Rn<DIM__>& vector) {
-
-  stream << "(";
-  for (size_t i = 0; i < DIM__ - 1; i++) {
-    stream << vector.component[i] << ", ";
-  }
-  return stream << vector.component[DIM__ - 1] << ")";
-}
-
-template <unsigned DIM__>
-inline std::istream& operator >>(std::istream& stream, math::Rn<DIM__>& vector) {
-  for (size_t i = 0; i < DIM__; i++) {
-    stream >> vector.component[i];
-  }
-  return stream;
 }
 
 template <unsigned DEGREE_>
@@ -188,11 +192,11 @@ inline std::istream& operator >>(std::istream& stream, math::Polynomial<DEGREE_>
 */
 template <unsigned DEGREE_>
 inline std::ostream& operator <<(std::ostream& stream, const math::Polynomial2<DEGREE_>& p) {
-  tuple<size_t, size_t> start = { 0,0 };
-  const tuple<size_t, size_t> last = { DEGREE_ + 1, DEGREE_ + 1 };
+  std::tuple<std::size_t, std::size_t> start = { 0,0 };
+  const std::tuple<std::size_t, std::size_t> last = { DEGREE_ + 1, DEGREE_ + 1 };
 
-  for (size_t i = 0; i <= DEGREE_; i++) {
-    for (size_t j = 0; j <= DEGREE_; j++) {
+  for (std::size_t i = 0; i <= DEGREE_; i++) {
+    for (std::size_t j = 0; j <= DEGREE_; j++) {
       const auto aij = p.coefficient[i][j];
       if (aij == 0) {
         if (start != last) {
@@ -234,26 +238,5 @@ inline std::ostream& operator <<(std::ostream& stream, const math::Polynomial2<D
   }
   return stream;
 }
-
-template <unsigned DEGREE_>
-inline std::istream& operator >>(std::istream& stream, math::Polynomial2<DEGREE_>& p) {
-  for (size_t i = 0; i <= DEGREE_; i++) {
-    for (size_t j = 0; j <= DEGREE_; j++) {
-      stream >> p.coefficient[i][j];
-    }
-  }
-  return stream;
-}
-
-template <typename F1, typename F2, typename F3>
-inline std::ostream& operator <<(std::ostream& stream, const math::Surface<F1, F2, F3>& Phi) {
-  return stream << "Phi(x,y) = (" << Phi.f1 << ", " << Phi.f2 << ", " << Phi.f3 << ")";
-}
-
-template <typename F1, typename F2, typename F3>
-inline std::istream& operator >>(std::istream& stream, math::Surface<F1, F2, F3>& Phi) {
-  return stream >> Phi.f1 >> Phi.f2 >> Phi.f3;
-}
-
 
 #endif

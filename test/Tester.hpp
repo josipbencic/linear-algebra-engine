@@ -9,6 +9,7 @@
 #include <map>
 #include <functional>
 #include <string>
+#include <sstream>
 #include <vector>
 #include <iostream>
 
@@ -38,8 +39,8 @@ std::map<std::string, std::function<bool()>> Tester::createTests() {
     auto& testSize = std::get<2>(test);
     auto& testSolution = std::get<3>(test);
 
-    stringstream solutionStream(testSolution);
-    vector<double> correctSolution;
+    std::stringstream solutionStream(testSolution);
+    std::vector<double> correctSolution;
     {
       double x;
       while (solutionStream >> x) {
@@ -47,18 +48,18 @@ std::map<std::string, std::function<bool()>> Tester::createTests() {
       }
     }
     auto testPredicate = [correctSolution, testInput, testSize]()->bool {
-      vector<double> solution = T::solve(testInput, testSize);
+      std::vector<double> solution = T::solve(testInput, testSize);
 
       if (solution.size() != correctSolution.size()) {
         std::cout << " [Solutions are of different sizes]: provided ";
         for (auto& x : solution) {
-          cout << x << " ";
+          std::cout << x << " ";
         }
-        cout << " while expecting ";
+        std::cout << " while expecting ";
         for (auto& x : correctSolution) {
-          cout << x << " ";
+          std::cout << x << " ";
         }
-        cout << endl;
+        std::cout << std::endl;
         return false;
       }
 
