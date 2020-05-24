@@ -1,54 +1,51 @@
 #ifndef MATH_STREAMS_HPP
 #define MATH_STREAMS_HPP
 
-#include "../src/AlgebraicStructures/RealCoordinateSpace.hpp"
 #include "../src/AlgebraicStructures/Mat3.hpp"
 #include "../src/AlgebraicStructures/Polynomial.hpp"
 #include "../src/AlgebraicStructures/Polynomial2.hpp"
+#include "../src/AlgebraicStructures/RealCoordinateSpace.hpp"
 #include "../src/AlgebraicStructures/Surface.hpp"
 #include "../src/Algorithms/GramSchmidt.hpp"
 
+#include <iomanip>
 #include <iostream>
 #include <ostream>
-#include <iomanip>
-#include <string>
-#include <vector>
 #include <sstream>
+#include <string>
 #include <tuple>
+#include <vector>
 
 struct InputUtil {
-  template<typename VectorSpace>
-  static int readVectorSpaceInputFromStream(
-    std::vector<VectorSpace>& space, std::stringstream& stream);
+  template <typename VectorSpace>
+  static int readVectorSpaceInputFromStream(std::vector<VectorSpace> &space,
+                                            std::stringstream &stream);
 
-  static int readLinearSystemFromStream(
-    std::vector<std::vector<double>> &linearSystem, std::stringstream& stream);
+  static int
+  readLinearSystemFromStream(std::vector<std::vector<double>> &linearSystem,
+                             std::stringstream &stream);
 };
 
 struct OutputUtil {
 
   template <typename VectorSpace>
-  static void writeGramSchmidtSolutionToStream(
-    const std::vector<VectorSpace>& v, std::ostream* stream
-  );
+  static void
+  writeGramSchmidtSolutionToStream(const std::vector<VectorSpace> &v,
+                                   std::ostream *stream);
 
   template <typename VectorSpace>
   static void writeDistanceFromSubspaceSolutionToStream(
-    std::vector<VectorSpace>& linearHull, std::ostream* stream
-  );
+      std::vector<VectorSpace> &linearHull, std::ostream *stream);
 
-  static void writeLinearSystemSolutionToStream(
-    const std::vector<double>& ret, std::ostream* stream
-  );
+  static void writeLinearSystemSolutionToStream(const std::vector<double> &ret,
+                                                std::ostream *stream);
 
-  static void printMatrixScientific(
-    const std::vector<std::vector<double>>& M, std::ostream& stream
-  );
-
+  static void printMatrixScientific(const std::vector<std::vector<double>> &M,
+                                    std::ostream &stream);
 };
 
 template <unsigned DIM__>
-std::ostream& operator <<(std::ostream& stream, const math::Rn<DIM__>& vector) {
+std::ostream &operator<<(std::ostream &stream, const math::Rn<DIM__> &vector) {
   stream << "(";
   for (size_t i = 0; i < DIM__ - 1; i++) {
     stream << vector.component[i] << ", ";
@@ -57,19 +54,20 @@ std::ostream& operator <<(std::ostream& stream, const math::Rn<DIM__>& vector) {
 }
 
 template <unsigned DIM__>
-std::istream& operator >>(std::istream& stream, math::Rn<DIM__>& vector) {
+std::istream &operator>>(std::istream &stream, math::Rn<DIM__> &vector) {
   for (size_t i = 0; i < DIM__; i++) {
     stream >> vector.component[i];
   }
   return stream;
 }
 
-std::istream& operator >>(std::istream& stream, math::M33& mat);
+std::istream &operator>>(std::istream &stream, math::M33 &mat);
 
-std::ostream& operator <<(std::ostream& stream, const math::M33& mat);
+std::ostream &operator<<(std::ostream &stream, const math::M33 &mat);
 
 template <unsigned DEGREE_>
-inline std::istream& operator >>(std::istream& stream, math::Polynomial2<DEGREE_>& p) {
+inline std::istream &operator>>(std::istream &stream,
+                                math::Polynomial2<DEGREE_> &p) {
   for (std::size_t i = 0; i <= DEGREE_; i++) {
     for (std::size_t j = 0; j <= DEGREE_; j++) {
       stream >> p.coefficient[i][j];
@@ -79,27 +77,31 @@ inline std::istream& operator >>(std::istream& stream, math::Polynomial2<DEGREE_
 }
 
 template <typename F1, typename F2, typename F3>
-inline std::ostream& operator <<(std::ostream& stream, const math::Surface<F1, F2, F3>& Phi) {
-  return stream << "Phi(x,y) = (" << Phi.f1 << ", " << Phi.f2 << ", " << Phi.f3 << ")";
+inline std::ostream &operator<<(std::ostream &stream,
+                                const math::Surface<F1, F2, F3> &Phi) {
+  return stream << "Phi(x,y) = (" << Phi.f1 << ", " << Phi.f2 << ", " << Phi.f3
+                << ")";
 }
 
 template <typename F1, typename F2, typename F3>
-inline std::istream& operator >>(std::istream& stream, math::Surface<F1, F2, F3>& Phi) {
+inline std::istream &operator>>(std::istream &stream,
+                                math::Surface<F1, F2, F3> &Phi) {
   return stream >> Phi.f1 >> Phi.f2 >> Phi.f3;
 }
 
 template <unsigned DEGREE_>
-inline std::ostream& operator <<(std::ostream& stream, const math::Polynomial<DEGREE_>& p);
+inline std::ostream &operator<<(std::ostream &stream,
+                                const math::Polynomial<DEGREE_> &p);
 
 template <unsigned DEGREE_>
-inline std::istream& operator >>(std::istream& stream, math::Polynomial2<DEGREE_>& p);
-
+inline std::istream &operator>>(std::istream &stream,
+                                math::Polynomial2<DEGREE_> &p);
 
 //  Implementation
 
-template<typename VectorSpace>
-int InputUtil::readVectorSpaceInputFromStream(
-  std::vector<VectorSpace>& space, std::stringstream& stream) {
+template <typename VectorSpace>
+int InputUtil::readVectorSpaceInputFromStream(std::vector<VectorSpace> &space,
+                                              std::stringstream &stream) {
   unsigned vectorNum;
   stream >> vectorNum;
 
@@ -118,22 +120,20 @@ int InputUtil::readVectorSpaceInputFromStream(
 
 template <typename VectorSpace>
 void OutputUtil::writeGramSchmidtSolutionToStream(
-  const std::vector<VectorSpace>& v, std::ostream* stream
-) {
-  std::ostream& out = *stream;
+    const std::vector<VectorSpace> &v, std::ostream *stream) {
+  std::ostream &out = *stream;
   out << "\n\t The result:\n\n";
   auto ret = math::GramSchmidt(v);
-  for (auto& x : ret) {
+  for (auto &x : ret) {
     out << "\t" << x << "\n";
   }
 }
 
 template <typename VectorSpace>
 void OutputUtil::writeDistanceFromSubspaceSolutionToStream(
-  std::vector<VectorSpace>& linearHull, std::ostream* stream
-) {
+    std::vector<VectorSpace> &linearHull, std::ostream *stream) {
 
-  std::ostream& out = *stream;
+  std::ostream &out = *stream;
   if (linearHull.empty()) {
     out << "The linear subspace has not been specified properly!" << std::endl;
     return;
@@ -146,7 +146,8 @@ void OutputUtil::writeDistanceFromSubspaceSolutionToStream(
 }
 
 template <unsigned DEGREE_>
-inline std::ostream& operator <<(std::ostream& stream, const math::Polynomial<DEGREE_>& p) {
+inline std::ostream &operator<<(std::ostream &stream,
+                                const math::Polynomial<DEGREE_> &p) {
 
   if (DEGREE_ == 0) {
     stream << p[0];
@@ -155,52 +156,62 @@ inline std::ostream& operator <<(std::ostream& stream, const math::Polynomial<DE
 
   if (p[DEGREE_] == 1.0) {
     stream << "x^" << DEGREE_;
-  }
-  else {
+  } else {
     stream << p[DEGREE_] << "x^" << DEGREE_;
   }
 
   static std::string plus = " + ", minus = " - ";
 
   for (size_t i = DEGREE_ - 1; i > 1; i--) {
-    if (abs(p[i] - 1.0) < math::EPSILON) stream << plus << "x^" << i;
-    else if (abs(p[i] + 1.0) < math::EPSILON) stream << minus << "x^" << i;
-    else if (p[i] > math::EPSILON) stream << plus << p[i] << "x^" << i;
-    else stream << minus << (-p[i]) << "x^" << i;
+    if (abs(p[i] - 1.0) < math::EPSILON)
+      stream << plus << "x^" << i;
+    else if (abs(p[i] + 1.0) < math::EPSILON)
+      stream << minus << "x^" << i;
+    else if (p[i] > math::EPSILON)
+      stream << plus << p[i] << "x^" << i;
+    else
+      stream << minus << (-p[i]) << "x^" << i;
   }
 
-  if (abs(p[1] - 1.0) < math::EPSILON) stream << plus << "x";
-  else if (abs(p[1] + 1.0) < math::EPSILON) stream << minus << "x";
-  else if (p[1] > math::EPSILON) stream << plus << p[1] << "x";
-  else stream << minus << (-p[1]) << "x";
-    
-  if (p[0] > math::EPSILON) stream << plus << p[0];
-  else stream << minus << (-p[0]);
+  if (abs(p[1] - 1.0) < math::EPSILON)
+    stream << plus << "x";
+  else if (abs(p[1] + 1.0) < math::EPSILON)
+    stream << minus << "x";
+  else if (p[1] > math::EPSILON)
+    stream << plus << p[1] << "x";
+  else
+    stream << minus << (-p[1]) << "x";
+
+  if (p[0] > math::EPSILON)
+    stream << plus << p[0];
+  else
+    stream << minus << (-p[0]);
   return stream;
 }
 
 template <unsigned DEGREE_>
-inline std::istream& operator >>(std::istream& stream, math::Polynomial<DEGREE_>& p) {
+inline std::istream &operator>>(std::istream &stream,
+                                math::Polynomial<DEGREE_> &p) {
   for (size_t i = DEGREE_; i >= 0; i--) {
     stream >> p[i];
   }
   return stream;
 }
 
-
 /*  Pretty print operator for 2d polynomial.
-*/
+ */
 template <unsigned DEGREE_>
-inline std::ostream& operator <<(std::ostream& stream, const math::Polynomial2<DEGREE_>& p) {
-  std::tuple<std::size_t, std::size_t> start = { 0,0 };
-  const std::tuple<std::size_t, std::size_t> last = { DEGREE_ + 1, DEGREE_ + 1 };
+inline std::ostream &operator<<(std::ostream &stream,
+                                const math::Polynomial2<DEGREE_> &p) {
+  std::tuple<std::size_t, std::size_t> start = {0, 0};
+  const std::tuple<std::size_t, std::size_t> last = {DEGREE_ + 1, DEGREE_ + 1};
 
   for (std::size_t i = 0; i <= DEGREE_; i++) {
     for (std::size_t j = 0; j <= DEGREE_; j++) {
       const auto aij = p.coefficient[i][j];
       if (aij == 0) {
         if (start != last) {
-          start = { i,j };
+          start = {i, j};
         }
         continue;
       }
@@ -208,8 +219,7 @@ inline std::ostream& operator <<(std::ostream& stream, const math::Polynomial2<D
       if (aij > 0) {
         if (start == last) {
           stream << " + ";
-        }
-        else {
+        } else {
           start = last;
         }
         if (aij != 1 || (i == 0 && j == 0)) {

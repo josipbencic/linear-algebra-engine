@@ -3,8 +3,8 @@
 
 using namespace std;
 
-int InputUtil::readLinearSystemFromStream(
-  vector<vector<double>> &linearSystem, stringstream& stream) {
+int InputUtil::readLinearSystemFromStream(vector<vector<double>> &linearSystem,
+                                          stringstream &stream) {
 
   size_t n;
   stream >> n;
@@ -23,9 +23,8 @@ int InputUtil::readLinearSystemFromStream(
 }
 
 void OutputUtil::writeLinearSystemSolutionToStream(
-  const std::vector<double>& ret, std::ostream* stream
-) {
-  std::ostream& out = *stream;
+    const std::vector<double> &ret, std::ostream *stream) {
+  std::ostream &out = *stream;
 
   out << "\t The result:\n\n";
   for (std::size_t i = 0; i < ret.size(); i++) {
@@ -35,8 +34,7 @@ void OutputUtil::writeLinearSystemSolutionToStream(
 }
 
 void OutputUtil::printMatrixScientific(
-  const std::vector<std::vector<double>>& M, std::ostream& stream
-) {
+    const std::vector<std::vector<double>> &M, std::ostream &stream) {
   stream << std::showpos << std::fixed << std::setprecision(6);
   for (auto x : M) {
     for (auto y : x) {
@@ -47,12 +45,13 @@ void OutputUtil::printMatrixScientific(
   stream << endl;
 }
 
-std::ostream& operator <<(std::ostream& stream, const math::M33& mat) {
+std::ostream &operator<<(std::ostream &stream, const math::M33 &mat) {
   stream << '[';
   for (int i = 0; i < 3; i++) {
     stream << "  ";
     for (int j = 0; j < 3; j++) {
-      stream << std::fixed << std::setprecision(6) << mat.data[i * 3 + j] << "  ";
+      stream << std::fixed << std::setprecision(6) << mat.data[i * 3 + j]
+             << "  ";
     }
     if (i < 2) {
       stream << "\n";
@@ -62,7 +61,7 @@ std::ostream& operator <<(std::ostream& stream, const math::M33& mat) {
   return stream;
 }
 
-std::istream& operator >>(std::istream& stream, math::M33& mat) {
+std::istream &operator>>(std::istream &stream, math::M33 &mat) {
   for (size_t i = 0; i < 9; i++) {
     stream >> mat.data[i];
   }
