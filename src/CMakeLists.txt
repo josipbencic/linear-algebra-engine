@@ -10,7 +10,6 @@ add_library(numerical
   Algorithms/LinearSystems.hpp
   Algorithms/GramSchmidt.hpp
   Constants.hpp
-  CommonFunctions.hpp
   MathStreams.cpp
   MathStreams.hpp
 )
