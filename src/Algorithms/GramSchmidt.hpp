@@ -19,20 +19,20 @@ namespace math {
     - Arithmetic operators and scalar multiplication.
 */
 template <typename VectorSpace>
-std::vector<VectorSpace> GramSchmidt(std::vector<VectorSpace> set) {
+::std::vector<VectorSpace> GramSchmidt(::std::vector<VectorSpace> set) {
 
   if (set.size() == 0)
     return set;
 
   //  The Orthonormal set returned by function
-  std::vector<VectorSpace> ONS;
+  ::std::vector<VectorSpace> ONS;
   ONS.push_back(set[0].normalize());
-  for (size_t i = 1; i < set.size(); i++) {
+  for (::std::size_t i = 1; i < set.size(); i++) {
 
     //  Orthogonal projection of i-th vector on the subspace
     //  spanned by current orthonormal set
     VectorSpace orthoProj = VectorSpace();
-    for (size_t j = 0; j < ONS.size(); j++)
+    for (::std::size_t j = 0; j < ONS.size(); j++)
       orthoProj = orthoProj + inner_product(set[i], ONS[j]) * ONS[j];
 
     //  Vector orthogonal to every vector currently in ONS
@@ -61,7 +61,7 @@ std::vector<VectorSpace> GramSchmidt(std::vector<VectorSpace> set) {
   to orthogonal complement of that subspace).
 */
 template <typename VectorSpace>
-double distanceFromSpace(std::vector<VectorSpace> space, VectorSpace vector) {
+double distanceFromSpace(::std::vector<VectorSpace> space, VectorSpace vector) {
 
   //  GramSchmidt can handle lineary dependent sets
   space = GramSchmidt(space);
