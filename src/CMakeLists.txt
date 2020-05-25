@@ -14,11 +14,13 @@ add_library(numerical
   MathStreams.hpp
 )
 
-add_executable(playground PlaygroundMain.cpp)
+target_compile_features(numerical PUBLIC cxx_std_17)
+target_include_directories(numerical PUBLIC ${PROJECT_SOURCE_DIR}/extern/eigen)
 
-target_compile_features(numerical  PUBLIC cxx_constexpr)
-target_compile_features(playground  PUBLIC cxx_constexpr)
-target_link_libraries("playground" "numerical")
+
+add_executable(playground PlaygroundMain.cpp)
+target_compile_features(playground PUBLIC cxx_std_17)
+target_link_libraries(playground numerical)
 
 if(MSVC)
   add_compile_options(/W3 /WX)
